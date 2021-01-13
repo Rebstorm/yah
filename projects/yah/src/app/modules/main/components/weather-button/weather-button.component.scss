@@ -1,0 +1,21 @@
+@import "weather-icons/css/weather-icons.min.css";
+
+
+.box {
+  position: relative;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 0.4rem 2rem 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 0.2rem );
+  -webkit-backdrop-filter: blur( 0.2rem );
+  border-radius: 0.7rem;
+  width: 10rem;
+  min-height: 10rem;
+
+  .header {
+    border-radius: 0.7rem 0.7rem 0 0;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    font-size: 2rem;
+  }
+}

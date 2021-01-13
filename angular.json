@@ -3,5 +3,166 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "yah": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/yah",
+      "sourceRoot": "projects/yah/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/yah",
+            "index": "projects/yah/src/index.html",
+            "main": "projects/yah/src/main.ts",
+            "polyfills": "projects/yah/src/polyfills.ts",
+            "tsConfig": "projects/yah/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/yah/src/favicon.ico",
+              "projects/yah/src/assets"
+            ],
+            "styles": [
+              "projects/yah/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/yah/src/environments/environment.ts",
+                  "with": "projects/yah/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "yah:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "yah:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "yah:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/yah/src/test.ts",
+            "polyfills": "projects/yah/src/polyfills.ts",
+            "tsConfig": "projects/yah/tsconfig.spec.json",
+            "karmaConfig": "projects/yah/karma.conf.js",
+            "assets": [
+              "projects/yah/src/favicon.ico",
+              "projects/yah/src/assets"
+            ],
+            "styles": [
+              "projects/yah/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/yah/tsconfig.app.json",
+              "projects/yah/tsconfig.spec.json",
+              "projects/yah/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/yah/e2e/protractor.conf.js",
+            "devServerTarget": "yah:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "yah:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "yah-weather": {
+      "projectType": "library",
+      "root": "projects/yah-weather",
+      "sourceRoot": "projects/yah-weather/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/yah-weather/tsconfig.lib.json",
+            "project": "projects/yah-weather/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/yah-weather/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/yah-weather/src/test.ts",
+            "tsConfig": "projects/yah-weather/tsconfig.spec.json",
+            "karmaConfig": "projects/yah-weather/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/yah-weather/tsconfig.lib.json",
+              "projects/yah-weather/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "yah"
 }
