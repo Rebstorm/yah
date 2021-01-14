@@ -1,13 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {WeatherService} from './services/weather.service';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {WeatherButtonComponent} from './components/weather-button/weather-button.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [WeatherButtonComponent],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    NgxSpinnerModule
+  ],
+  exports: [WeatherButtonComponent]
 })
 export class WeatherModule { }

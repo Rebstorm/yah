@@ -25,7 +25,12 @@
             "aot": true,
             "assets": [
               "projects/yah/src/favicon.ico",
-              "projects/yah/src/assets"
+              "projects/yah/src/assets",
+              {
+                "glob": "**/*",
+                "input": "projects/yah-weather/src/assets",
+                "output": "assets"
+              }
             ],
             "styles": [
               "projects/yah/src/styles.scss"

@@ -1,0 +1,50 @@
+<div class="box" @fade>
+  <ngx-spinner
+    name="weather-spinner"
+    bdColor="rgba(0,0,0,0.4)"
+    size="medium"
+    color="#fff"
+    type="ball-atom"
+    [fullScreen]="false"
+  ><p style="color: white">Loading...</p></ngx-spinner
+  >
+
+  <div class="header">
+    <img src="./assets/clearsky_day.png"> Wetter
+  </div>
+
+  <div class="forecast next-hour">
+    <div>
+      Nächste Stunde
+    </div>
+    <div>
+      <img src="./assets/{{currentIcon}}.png">
+      {{currentDegrees}}C
+    </div>
+  </div>
+
+  <div class="forecast next-hour">
+    <div>
+      Nächste Stunde
+    </div>
+    <div>
+      <img src="./assets/{{currentIcon}}.png">
+      {{nextHourDegrees}}C
+    </div>
+  </div>
+
+  <div class="forecast next-hour">
+    <div>
+      Nächste Stunde
+    </div>
+    <div>
+      <img src="./assets/{{currentIcon}}.png">
+      {{nextHourDegrees}}C
+    </div>
+  </div>
+
+
+
+
+
+</div>
