@@ -23,7 +23,7 @@ export class WeatherButtonComponent implements OnInit {
   currentDegrees = -1;
   currentIcon = '';
   nextHourIcon = '';
-  nextHourDegrees = -1;
+  next12HoursIcon = '';
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -43,8 +43,10 @@ export class WeatherButtonComponent implements OnInit {
 
   private setWeatherInformation(timeSeries: TimeSeries): void {
     this.currentDegrees = timeSeries.data.instant.details.air_temperature;
+    this.currentIcon = timeSeries.data.next_1_hours.summary.symbol_code;
+
     this.nextHourIcon = timeSeries.data.next_1_hours.summary.symbol_code;
-    this.currentIcon = timeSeries.data.next_12_hours.summary.symbol_code;
+    this.next12HoursIcon = timeSeries.data.next_12_hours.summary.symbol_code;
   }
 
   ngOnInit(): void {}

@@ -6,45 +6,33 @@
     color="#fff"
     type="ball-atom"
     [fullScreen]="false"
-  ><p style="color: white">Loading...</p></ngx-spinner
+    ><p style="color: white">Loading...</p></ngx-spinner
   >
 
-  <div class="header">
-    <img src="./assets/clearsky_day.png"> Wetter
-  </div>
+  <div class="header"><img src="./assets/clearsky_day.png" /> Wetter</div>
 
   <div class="forecast next-hour">
+    <div>Jetzt</div>
     <div>
-      Nächste Stunde
-    </div>
-    <div>
-      <img src="./assets/{{currentIcon}}.png">
-      {{currentDegrees}}C
+      <img src="./assets/{{ currentIcon }}.png" />
+      {{ currentDegrees }}&#8451;
     </div>
   </div>
 
-  <div class="forecast next-hour">
-    <div>
-      Nächste Stunde
-    </div>
-    <div>
-      <img src="./assets/{{currentIcon}}.png">
-      {{nextHourDegrees}}C
-    </div>
-  </div>
-
-  <div class="forecast next-hour">
-    <div>
-      Nächste Stunde
-    </div>
-    <div>
-      <img src="./assets/{{currentIcon}}.png">
-      {{nextHourDegrees}}C
+  <div class="forecast upcoming-weather">
+    <div class="share-row">
+      <div class="ternary-content">
+        <div>Nächste Stunde</div>
+        <div>
+          <img class="ternary-image"  src="./assets/{{ nextHourIcon }}.png" />
+        </div>
+      </div>
+      <div class="ternary-content">
+        <div>Nächste 12 Stunden</div>
+        <div>
+          <img class="ternary-image" src="./assets/{{ next12HoursIcon }}.png" />
+        </div>
+      </div>
     </div>
   </div>
-
-
-
-
-
 </div>
