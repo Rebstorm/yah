@@ -1,9 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { map, take, tap } from 'rxjs/operators';
-import {WeatherService} from '../../services/weather.service';
-import {TimeSeries} from '../../types/yr-no-weather-forecast';
-import {animate, query, stagger, state, style, transition, trigger} from '@angular/animations';
+import { WeatherService } from '../../services/weather.service';
+import { TimeSeries } from '../../types/yr-no-weather-forecast';
+import {
+  animate,
+  query,
+  stagger,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'yah-weather-button',
@@ -15,26 +24,28 @@ import {animate, query, stagger, state, style, transition, trigger} from '@angul
       state('*', style({ marginTop: 0, opacity: 1 })),
       transition(':enter', animate('800ms ease-out')),
       transition(':leave', animate('800ms ease-in')),
-    ])
-  ]
+    ]),
+  ],
 })
-export class WeatherButtonComponent implements OnInit {
+export class WeatherButtonComponent implements OnInit, OnDestroy {
   spinnerName = 'weather-spinner';
   currentDegrees = -1;
   currentIcon = '';
   nextHourIcon = '';
   next12HoursIcon = '';
+  lastTimeRefreshed = '';
+  private weatherSubscription: Subscription;
 
   constructor(
     private spinner: NgxSpinnerService,
-    private weatherService: WeatherService,
+    private weatherService: WeatherService
   ) {
     this.spinner.show(this.spinnerName);
 
-    this.weatherService
+    this.weatherSubscription = this.weatherService
       .getCurrentWeatherInformation()
       .pipe(
-        take(1),
+        tap(() => this.spinner.show(this.spinnerName)),
         map((res) => res.properties.timeseries[0]),
         tap(() => this.spinner.hide(this.spinnerName))
       )
@@ -47,7 +58,13 @@ export class WeatherButtonComponent implements OnInit {
 
     this.nextHourIcon = timeSeries.data.next_1_hours.summary.symbol_code;
     this.next12HoursIcon = timeSeries.data.next_12_hours.summary.symbol_code;
+
+    this.lastTimeRefreshed = new Date(timeSeries.time).toLocaleTimeString();
   }
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.weatherSubscription.unsubscribe();
+  }
 }
