@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {StartScreenComponent} from './components/start-screen/start-screen.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {WeatherModule} from 'yah-weather';
+import { LightModule } from 'yah-light';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     NgxSpinnerModule,
     WeatherModule,
+    LightModule,
     RouterModule.forChild(routes),
   ]
 })

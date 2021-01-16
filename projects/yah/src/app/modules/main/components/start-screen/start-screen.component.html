@@ -1,4 +1,12 @@
-<div class="container">
-  <yah-weather-button></yah-weather-button>
-</div>
+<div
+  class="container"
+  #container
+  [@fadeIn]="availableApps.length"
+  *ngFor="let app of availableApps"
+>
+  <ng-container [ngSwitch]="app">
+    <yah-weather-button *ngSwitchCase="'weather'"></yah-weather-button>
+    <yah-light-button *ngSwitchCase="'light'"></yah-light-button>
+  </ng-container>
 
+</div>

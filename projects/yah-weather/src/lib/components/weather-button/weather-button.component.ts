@@ -18,14 +18,6 @@ import { Subscription } from 'rxjs';
   selector: 'yah-weather-button',
   templateUrl: './weather-button.component.html',
   styleUrls: ['./weather-button.component.scss'],
-  animations: [
-    trigger('fade', [
-      state('void', style({ marginTop: 40, opacity: 0 })),
-      state('*', style({ marginTop: 0, opacity: 1 })),
-      transition(':enter', animate('800ms ease-out')),
-      transition(':leave', animate('800ms ease-in')),
-    ]),
-  ],
 })
 export class WeatherButtonComponent implements OnInit, OnDestroy {
   spinnerName = 'weather-spinner';

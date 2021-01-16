@@ -23,6 +23,10 @@
       "yah-weather": [
         "dist/yah-weather/yah-weather",
         "dist/yah-weather"
+      ],
+      "yah-light": [
+        "dist/yah-light/yah-light",
+        "dist/yah-light"
       ]
     }
   }
