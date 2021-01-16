@@ -12,4 +12,14 @@
     box-shadow: 0 0.4rem 2rem 0 rgba(0, 0, 0, 0.37);
   }
 
-}
+  .header {
+    border-radius: 0.7rem 0.7rem 0 0;
+    background: #fff;
+    color: #000;
+    font-size: 2rem;
+    display: grid;
+    grid-template-columns: 20fr 80fr;
+    padding: 0.5rem 1rem;
+  }
+
+  }

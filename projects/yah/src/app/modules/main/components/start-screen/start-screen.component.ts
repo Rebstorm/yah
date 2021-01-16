@@ -21,9 +21,9 @@ import {
           [
             style({ opacity: 0, transform: 'translateY(-15px)' }),
             stagger(
-              '5000ms',
+              '500ms',
               animate(
-                '300ms ease-out',
+                '500ms ease-out',
                 style({ opacity: 1, transform: 'translateY(0px)' })
               )
             ),
