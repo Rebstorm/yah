@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LightService} from '../../services/light.service';
 
 @Component({
   selector: 'yah-light-button',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LightButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lightsService: LightService) {
+
+  }
 
   ngOnInit(): void {
   }
