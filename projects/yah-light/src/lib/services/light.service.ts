@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
+import {concat, EMPTY, Observable, of} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import {catchError, delay, filter, map, repeat, switchMap, take, timestamp} from 'rxjs/operators';
 
 export interface HueInternalModel {
   error: {
@@ -11,18 +11,32 @@ export interface HueInternalModel {
   };
 }
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class LightService {
+  isAuthenticated$: Observable<boolean>;
+
   constructor(private http: HttpClient) {
-    this.getHueBridge().subscribe( res => console.log(res), error => console.error(error));
+    this.isAuthenticated$ = this.getHueBridge().pipe()
   }
 
-  getHueBridge(): Observable<HueInternalModel[]> {
+  private getHueBridge(): Observable<boolean> {
     // TODO: incase of adding another screen, make this more dynamic
-    return this.http.post<HueInternalModel[]>('http://192.168.178.21/api/', { devicetype: 'homescreen#homescreen_app1' }, {});
+    return this.http
+      .post<HueInternalModel[]>(
+        'http://192.168.178.21/api/',
+        { devicetype: 'homescreen#homescreen_test_1' },
+        {}
+      )
+      .pipe(
+        map((res) => res.pop()),
+        map((res) => res.error.type !== 101),
+        timestamp(),
+        switchMap(({ timestamp: ts, value: value }) =>
+          concat(of(value), EMPTY.pipe(delay(5000)))
+        ),
+        repeat()
+      );
   }
 }
-

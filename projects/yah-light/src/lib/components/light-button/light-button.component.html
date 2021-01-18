@@ -1,3 +1,15 @@
 <div class="box">
-  <div class="header">Licht</div>
+  <div *ngIf="!clickHueButton" class="header">Licht</div>
+
+  <div class="authenticate-box" *ngIf="clickHueButton">
+    <img src="/assets/lamp.svg">
+
+    <div class="text">
+      Bitte die App an der Hue Bridge freigeben
+    </div>
+
+  </div>
 </div>
+
+<!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+-->

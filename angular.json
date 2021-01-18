@@ -30,6 +30,11 @@
                 "glob": "**/*",
                 "input": "projects/yah-weather/src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/yah-light/src/assets",
+                "output": "assets"
               }
             ],
             "styles": [
