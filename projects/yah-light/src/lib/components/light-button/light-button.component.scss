@@ -8,6 +8,7 @@
   min-width: 20rem;
   max-width: 40rem;
   transition: all 50ms ease;
+  position: relative;
 
   &:active {
     box-shadow: 0 0.4rem 2rem 0 rgba(0, 0, 0, 0.37);
@@ -31,6 +32,8 @@
     }
 
     .text {
+      width: 6rem;
+      height: 6rem;
       word-wrap: break-word;
       padding: 1rem;
     }
@@ -45,6 +48,8 @@
     grid-template-columns: 20fr 80fr;
     padding: 0.5rem 1rem;
   }
+}
 
-  }
-
+.overlay {
+  border-radius: 0.7rem;
+}

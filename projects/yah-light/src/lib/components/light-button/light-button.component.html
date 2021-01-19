@@ -2,10 +2,18 @@
   <div *ngIf="!clickHueButton" class="header">Licht</div>
 
   <div class="authenticate-box" *ngIf="clickHueButton">
-    <img src="/assets/lamp.svg">
+
+    <ngx-spinner
+      name="light-auth-spinner"
+      bdColor="rgba(0,0,0,0.4)"
+      size="medium"
+      color="#fff"
+      type="ball-atom"
+      [fullScreen]="false"
+    ><p style="color: white">Bitte die App an der Hue Bridge freigeben</p></ngx-spinner
+    >
 
     <div class="text">
-      Bitte die App an der Hue Bridge freigeben
     </div>
 
   </div>

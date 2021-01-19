@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LightService} from '../../services/light.service';
 import {take} from 'rxjs/operators';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'yah-light-button',
@@ -10,7 +11,7 @@ import {take} from 'rxjs/operators';
 export class LightButtonComponent implements OnInit {
   clickHueButton = false;
 
-  constructor(private lightsService: LightService) {
+  constructor(private lightsService: LightService, private ngxSpinnerService: NgxSpinnerService) {
     this.lightsService.isAuthenticated$.subscribe(res => res === false ? this.tellUserToAuthenticate() : this.setupLightConnection());
   }
 
@@ -19,6 +20,7 @@ export class LightButtonComponent implements OnInit {
 
   private tellUserToAuthenticate(): void {
     this.clickHueButton = true;
+    this.ngxSpinnerService.show('light-auth-spinner');
     console.error('user needs to authenticate to light');
   }
 
