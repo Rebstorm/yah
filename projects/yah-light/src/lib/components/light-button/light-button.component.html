@@ -1,8 +1,12 @@
 <div class="box">
   <div *ngIf="!clickHueButton" class="header">Licht</div>
 
-  <div class="authenticate-box" *ngIf="clickHueButton">
+  <div *ngIf="!clickHueButton" class="content">
 
+    <button (click)="turnOffAllLights()"> Click me to turn off all lights </button>
+  </div>
+
+  <div class="authenticate-box" *ngIf="clickHueButton">
     <ngx-spinner
       name="light-auth-spinner"
       bdColor="rgba(0,0,0,0.4)"
@@ -10,12 +14,10 @@
       color="#fff"
       type="ball-atom"
       [fullScreen]="false"
-    ><p style="color: white">Bitte die App an der Hue Bridge freigeben</p></ngx-spinner
+      ><p style="color: white">
+        Bitte die App an der Hue Bridge freigeben
+      </p></ngx-spinner
     >
-
-    <div class="text">
-    </div>
-
   </div>
 </div>
 

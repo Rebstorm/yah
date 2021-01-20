@@ -20,7 +20,7 @@
     align-items: center;
     flex-direction: column;
     border-radius: 0.7rem;
-    min-height: 20rem;
+    min-height: inherit;
     max-width: inherit;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(0.7rem);
@@ -50,6 +50,3 @@
   }
 }
 
-.overlay {
-  border-radius: 0.7rem;
-}

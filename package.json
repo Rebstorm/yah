@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~11.0.6",
     "@angular/router": "~11.0.6",
     "ngx-spinner": "^10.0.1",
+    "@ngx-pwa/local-storage": "^11.0.2",
     "node-hue-api": "^4.0.10",
     "process": "^0.11.10",
     "rxjs": "~6.6.0",
