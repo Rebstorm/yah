@@ -1,18 +1,8 @@
-import { Injectable } from '@angular/core';
-import { concat, EMPTY, Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import {
-  delay,
-  filter,
-  map,
-  repeat,
-  switchMap,
-  take,
-  tap,
-  timestamp,
-} from 'rxjs/operators';
-import { StorageMap } from '@ngx-pwa/local-storage';
-import { HueLampObject } from '../types/hue-lamp-object';
+import {Injectable} from '@angular/core';
+import {concat, EMPTY, Observable, of} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {delay, filter, map, repeat, switchMap, take, tap, timestamp,} from 'rxjs/operators';
+import {StorageMap} from '@ngx-pwa/local-storage';
 
 export interface HueInternalModel {
   error?: {

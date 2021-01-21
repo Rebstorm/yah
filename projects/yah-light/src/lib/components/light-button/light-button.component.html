@@ -1,9 +1,8 @@
 <div class="box">
-  <div *ngIf="!clickHueButton" class="header">Licht</div>
+  <div *ngIf="!clickHueButton" class="header"><img src="./assets/lamp.svg" /> Licht</div>
 
   <div *ngIf="!clickHueButton" class="content">
-
-    <button (click)="turnOffAllLights()"> Click me to turn off all lights </button>
+    <div class="glass-button" (click)="turnOffAllLights()"> Licht ausmachen </div>
   </div>
 
   <div class="authenticate-box" *ngIf="clickHueButton">
