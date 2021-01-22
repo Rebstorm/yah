@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.0.6",
     "@angular/platform-browser-dynamic": "~11.0.6",
     "@angular/router": "~11.0.6",
+    "@angular/cdk": "^11.1.0",
     "ngx-spinner": "^10.0.1",
     "@ngx-pwa/local-storage": "^11.0.2",
     "node-hue-api": "^4.0.10",

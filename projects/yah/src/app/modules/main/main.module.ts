@@ -5,6 +5,7 @@ import {StartScreenComponent} from './components/start-screen/start-screen.compo
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {WeatherModule} from 'yah-weather';
 import { LightModule } from 'yah-light';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     NgxSpinnerModule,
     WeatherModule,
     LightModule,
+    DragDropModule,
     RouterModule.forChild(routes),
   ]
 })
