@@ -27,6 +27,10 @@
       "yah-light": [
         "dist/yah-light/yah-light",
         "dist/yah-light"
+      ],
+      "yah-cleaning": [
+        "dist/yah-cleaning/yah-cleaning",
+        "dist/yah-cleaning"
       ]
     }
   }

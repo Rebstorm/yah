@@ -32,7 +32,7 @@ export class StartScreenComponent implements OnInit {
   availableApps: string[];
 
   constructor() {
-    this.availableApps = Array.of('weather', 'light');
+    this.availableApps = Array.of('weather', 'light', 'cleaning');
   }
 
   ngOnInit(): void {

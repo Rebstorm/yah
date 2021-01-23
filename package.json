@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.0.6",
+    "@angular/cdk": "^11.1.0",
     "@angular/common": "~11.0.6",
     "@angular/compiler": "~11.0.6",
     "@angular/core": "~11.0.6",
@@ -19,9 +20,8 @@
     "@angular/platform-browser": "~11.0.6",
     "@angular/platform-browser-dynamic": "~11.0.6",
     "@angular/router": "~11.0.6",
-    "@angular/cdk": "^11.1.0",
-    "ngx-spinner": "^10.0.1",
     "@ngx-pwa/local-storage": "^11.0.2",
+    "ngx-spinner": "^10.0.1",
     "node-hue-api": "^4.0.10",
     "process": "^0.11.10",
     "rxjs": "~6.6.0",

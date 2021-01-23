@@ -35,6 +35,11 @@
                 "glob": "**/*",
                 "input": "projects/yah-light/src/assets",
                 "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/yah-cleaning/src/assets",
+                "output": "assets"
               }
             ],
             "styles": [
@@ -205,6 +210,46 @@
             "tsConfig": [
               "projects/yah-light/tsconfig.lib.json",
               "projects/yah-light/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "yah-cleaning": {
+      "projectType": "library",
+      "root": "projects/yah-cleaning",
+      "sourceRoot": "projects/yah-cleaning/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/yah-cleaning/tsconfig.lib.json",
+            "project": "projects/yah-cleaning/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/yah-cleaning/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/yah-cleaning/src/test.ts",
+            "tsConfig": "projects/yah-cleaning/tsconfig.spec.json",
+            "karmaConfig": "projects/yah-cleaning/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/yah-cleaning/tsconfig.lib.json",
+              "projects/yah-cleaning/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

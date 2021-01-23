@@ -6,6 +6,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import {WeatherModule} from 'yah-weather';
 import { LightModule } from 'yah-light';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {CleaningModule} from 'yah-cleaning';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     LightModule,
     DragDropModule,
     RouterModule.forChild(routes),
+    CleaningModule,
   ]
 })
 export class MainModule { }
