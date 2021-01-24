@@ -1,5 +1,21 @@
 <div class="box">
   <div class="header"><img src="./assets/cleaner.svg" /> Robotstaubsauger </div>
+
+  <ngx-spinner
+    name="cleaning-connection-spinner"
+    bdColor="rgba(0,0,0,0.4)"
+    size="medium"
+    color="#fff"
+    type="ball-atom"
+    [fullScreen]="false"
+  ><p style="color: white">
+    Verbindung wird hergestellt zu die Staubsauger...
+  </p></ngx-spinner
+  >
+
+  <div class="robot-status" *ngIf="robotAvailable">
+    <div> clean button </div>
+  </div>
 </div>
 
 

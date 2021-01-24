@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CleaningService } from '../../services/cleaning.service';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'yah-cleaning-button',
@@ -6,22 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cleaning-button.component.scss'],
 })
 export class CleaningButtonComponent implements OnInit {
-  ROBOT_DETAILS = {
-    ver: '3',
-    hostname: 'Roomba-3174420892025740',
-    robotname: 'Staubie',
-    ip: '192.168.178.49',
-    mac: 'D0:C5:D3:38:F6:57',
-    sw: '3.4.62',
-    sku: 'e515440',
-    nc: 0,
-    proto: 'mqtt',
-    cap: { ota: 1, eco: 1, svcConf: 1 },
-    blid: '3174420892025740',
-    pw: ':1:1554031907:sfmsHscY8ACd2QbD',
-  };
+  robotAvailable = false;
+  robotBattery = 0;
+  private SPINNER_NAME = 'cleaning-connection-spinner';
 
-  constructor() {}
+  constructor(private cleaningService: CleaningService, private ngxSpinnerService: NgxSpinnerService) {
+    this.ngxSpinnerService.show(this.SPINNER_NAME);
+    this.cleaningService.status$.subscribe((status) => {
+      this.ngxSpinnerService.hide(this.SPINNER_NAME);
+
+      this.robotAvailable = status.bin.present;
+      this.robotBattery = status.batPct;
+    });
+  }
 
   ngOnInit(): void {}
 }
