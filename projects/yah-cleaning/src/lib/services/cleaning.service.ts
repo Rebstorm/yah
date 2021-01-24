@@ -12,7 +12,7 @@ import {CleaningStatus} from '../types/cleaning-status';
 export class CleaningService {
   status$: Observable<CleaningStatus>;
 
-  private SERVER_URL = 'http://localhost:3000';
+  private SERVER_URL = 'http://127.0.0.1:3000';
   constructor(private http: HttpClient) {
     this.status$ = this.http
       .get<CleaningStatus>(`${this.SERVER_URL}/api/local/info/mission`)
