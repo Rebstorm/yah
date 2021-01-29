@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { concat, EMPTY, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { delay, repeat } from 'rxjs/operators';
-import {CleaningStatus} from '../types/cleaning-status';
-
-
+import { delay, repeat, switchMap, timestamp } from 'rxjs/operators';
+import { CleaningStatus } from '../types/cleaning-status';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +14,12 @@ export class CleaningService {
   constructor(private http: HttpClient) {
     this.status$ = this.http
       .get<CleaningStatus>(`${this.SERVER_URL}/api/local/info/mission`)
-      .pipe(delay(10000), repeat());
+      .pipe(
+        timestamp(),
+        switchMap(({ timestamp: ts, value: value }) =>
+          concat(of(value), EMPTY.pipe(delay(60000)))
+        ),
+        repeat()
+      );
   }
 }

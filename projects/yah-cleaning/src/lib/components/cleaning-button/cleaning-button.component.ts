@@ -16,7 +16,6 @@ export class CleaningButtonComponent implements OnInit {
     this.ngxSpinnerService.show(this.SPINNER_NAME);
     this.cleaningService.status$.subscribe((status) => {
       this.ngxSpinnerService.hide(this.SPINNER_NAME);
-
       this.robotAvailable = status.bin.present;
       this.robotBattery = status.batPct;
     });
