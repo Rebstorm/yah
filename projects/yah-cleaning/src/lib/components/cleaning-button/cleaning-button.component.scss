@@ -26,7 +26,6 @@
       width: 3rem;
       height: 3rem;
     }
-
   }
 
   .robot-status {
@@ -36,7 +35,7 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-
+    margin-top: 1rem;
 
     .cleaning-button {
       padding: 1rem;
@@ -44,7 +43,6 @@
       border-radius: 0.7rem;
       box-shadow: 0 0.4rem 2rem 0 rgba(31, 38, 135, 0.37);
       transition: all 50ms ease;
-
 
       &:active {
         background: #34e0a0;
@@ -61,43 +59,47 @@
       &:active {
         background: #ea1313;
       }
-
     }
 
+    .battery {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 1rem;
+      .gg-battery {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        width: 2rem;
+        height: 0.9rem;
+        transform: scale(var(--ggs, 1));
+        border: 2px solid;
+        border-radius: 3px;
+        margin-left: -3px;
+      }
+
+      .gg-battery::after,
+      .gg-battery::before {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        height: 0.5rem;
+        background: currentColor;
+        top: 1px;
+      }
+
+      .gg-battery::before {
+        right: -4px;
+        border-radius: 3px;
+        width: 4px;
+      }
+
+      .gg-battery::after {
+        width: 1.6rem;
+        left: 1px;
+      }
+    }
   }
-
 }
 
-.gg-battery {
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  width: 20px;
-  height: 12px;
-  transform: scale(var(--ggs,1));
-  border: 2px solid;
-  border-radius: 3px;
-  margin-left: -3px
-}
-
-.gg-battery::after,
-.gg-battery::before {
-  content: "";
-  display: block;
-  box-sizing: border-box;
-  position: absolute;
-  height: 6px;
-  background: currentColor;
-  top: 1px
-}
-
-.gg-battery::before {
-  right: -4px;
-  border-radius: 3px;
-  width: 4px
-}
-
-.gg-battery::after {
-  width: 8px;
-  left: 1px
-}
