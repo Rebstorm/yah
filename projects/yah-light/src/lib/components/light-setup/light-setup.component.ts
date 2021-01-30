@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LightSetupComponent implements OnInit {
 
+  validIp = false;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,0 +1,43 @@
+
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+
+  .input-row {
+    display: flex;
+    align-items: center;
+
+    .input-frosted {
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 800;
+      padding: 1rem;
+      border: none;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(0.2rem);
+      -webkit-backdrop-filter: blur(0.2rem);
+      border-radius: 0.7rem;
+    }
+
+
+    .symbol {
+      width: 2rem;
+      height: 2rem ;
+      &.connected {
+        background: url("./assets/tick.svg") no-repeat;
+      }
+
+      &.disconnected {
+        background: url("./assets/close.svg") center no-repeat;
+
+      }
+    }
+  }
+}
+
+
+
