@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
+import { LightService } from './../../services/light.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'yah-light-setup',
@@ -7,11 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LightSetupComponent implements OnInit {
 
+  @ViewChild('ipInput', { static: true }) ipInput: ElementRef<HTMLInputElement>;
   validIp = false;
 
-  constructor() { }
+  constructor(private lightService: LightService) { }
 
   ngOnInit(): void {
+  }
+
+
+  public checkIP() {
+
+    const input = this.ipInput.nativeElement.value;
+
+    if(input.length > 1){
+      this.lightService.checkHueBridgeIp(input).pipe(take(1)).subscribe(res => {
+         res.status === 200 ? this.setNewHueValidIp(input) : this.validIp = false;
+      })
+    }
+   
+
+
+  }
+  setNewHueValidIp(input: string) {
+    this.lightService.saveHueBridgeIp(input).subscribe();
   }
 
 }
