@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "npm run build-all",
+    "build-all": "ng b yah-light && ng b yah-weather && ng b yah-cleaning"
   },
   "private": true,
   "dependencies": {
