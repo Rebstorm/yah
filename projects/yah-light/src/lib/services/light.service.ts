@@ -197,10 +197,20 @@ export class LightService {
   }
 
   public saveHueBridgeIp(ip: string): Observable<null> {
-    console.log('saving..');
     let formattedIp = ip.replace('http://', '');
     formattedIp = formattedIp.replace('/api', '');
     formattedIp = formattedIp.replace('/', '');
+
+    this.toastMessage.success(
+      'Philips Hue server Einstellungen sind gespeichert',
+      {
+        style: {
+          background: 'rgba(255, 255, 255, 0.8)',
+        },
+        dismissible: true,
+        ariaLive: 'polite',
+      }
+    );
 
     return this.localDb.set(this.HUE_URL_KEY, `http://${formattedIp}/api`, {
       type: 'string',

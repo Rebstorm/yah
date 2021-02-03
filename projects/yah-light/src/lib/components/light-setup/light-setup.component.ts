@@ -1,4 +1,10 @@
-import { take, tap } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  distinctUntilKeyChanged,
+  take,
+  tap,
+} from 'rxjs/operators';
 import { LightService } from './../../services/light.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -13,13 +19,13 @@ export class LightSetupComponent implements OnInit {
 
   checkingSubscription: Subscription;
 
-  validIp = false;
+  validIp = 'disconnected';
 
   constructor(private lightService: LightService) {
     this.lightService.hueBridgeIp.subscribe((res) => {
       if (res) {
         this.ipInput.nativeElement.value = res;
-        this.validIp = true;
+        this.validIp = 'connected';
       }
     });
   }
@@ -30,12 +36,16 @@ export class LightSetupComponent implements OnInit {
     const input = this.ipInput.nativeElement.value;
 
     if (input.length > 1) {
+      this.validIp = 'loading';
+
+      // Have we already fired it? Then let it run out..
+      if (this.checkingSubscription) {
+        this.checkingSubscription.unsubscribe();
+      }
+
       this.checkingSubscription = this.lightService
         .checkHueBridgeIp(input)
-        .pipe(
-          take(1),
-          tap(() => (this.validIp = false))
-        )
+        .pipe(debounceTime(750), distinctUntilChanged(), take(1))
         .subscribe(
           (res) => {
             res.status === 200
@@ -47,11 +57,11 @@ export class LightSetupComponent implements OnInit {
     }
   }
   showErrorMessage() {
-    this.validIp = false;
+    this.validIp = 'disconnected';
   }
   setNewHueValidIp(input: string) {
     this.checkingSubscription.unsubscribe();
-    this.validIp = true;
+    this.validIp = 'connected';
     this.lightService.saveHueBridgeIp(input).subscribe();
   }
 }

@@ -26,7 +26,8 @@ form {
 
     .symbol {
       width: 2rem;
-      height: 2rem ;
+      height: 2rem;
+      margin-left: 0.5rem;
       &.connected {
         background: url("./assets/tick.svg") no-repeat;
       }
@@ -34,6 +35,10 @@ form {
       &.disconnected {
         background: url("./assets/close.svg") center no-repeat;
 
+      }
+      &.loading {
+        background: url("./assets/loading.svg");
+        background-size: contain;
       }
     }
   }
