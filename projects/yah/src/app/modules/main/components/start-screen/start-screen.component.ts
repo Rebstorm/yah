@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {animate, query, stagger, style, transition, trigger,} from '@angular/animations';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
@@ -31,7 +32,7 @@ export class StartScreenComponent implements OnInit {
 
   availableApps: string[];
 
-  constructor() {
+  constructor(private router: Router) {
     this.availableApps = Array.of('weather', 'light', 'cleaning');
   }
 
@@ -41,5 +42,9 @@ export class StartScreenComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.availableApps, event.previousIndex, event.currentIndex);
+  }
+
+  goSettings(){
+    this.router.navigate(['setup']).then();
   }
 }

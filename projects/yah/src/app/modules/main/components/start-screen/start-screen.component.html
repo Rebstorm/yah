@@ -1,3 +1,9 @@
+<div class="button-container">
+  <div class="settings" (click)="goSettings()">
+    <img class="settings-img" src="./assets/settings.svg">
+  </div>
+</div>
+
 <div cdkDropList cdkDropListOrientation="horizontal" class="app-list" (cdkDropListDropped)="drop($event)">
   <div class="container" [@fadeIn]="availableApps.length">
     <div *ngFor="let app of availableApps">
@@ -15,3 +21,6 @@
     </div>
   </div>
 </div>
+
+
+<!-- <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
