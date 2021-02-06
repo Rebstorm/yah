@@ -217,7 +217,7 @@ export class LightService {
       : empty();
   }
 
-  isIp(ipaddress: string) {
+  public isIp(ipaddress: string): boolean {
     if (
       /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
         ipaddress
@@ -241,6 +241,7 @@ export class LightService {
         },
         dismissible: true,
         ariaLive: 'polite',
+        id: 'hue-saved'
       }
     );
 
@@ -258,6 +259,7 @@ export class LightService {
         },
         dismissible: true,
         ariaLive: 'polite',
+        id: 'hue-saved'
       }
     );
 
