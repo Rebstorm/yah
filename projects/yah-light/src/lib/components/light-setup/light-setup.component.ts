@@ -22,7 +22,7 @@ export class LightSetupComponent implements OnInit {
   validIp = 'disconnected';
 
   constructor(private lightService: LightService) {
-    this.lightService.hueBridgeIp.subscribe((res) => {
+    this.lightService.hueBridgeIp$.subscribe((res) => {
       if (res) {
         this.ipInput.nativeElement.value = res;
         this.validIp = 'connected';

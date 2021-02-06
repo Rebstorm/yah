@@ -50,33 +50,41 @@ export interface HueInternalModel {
   providedIn: 'root',
 })
 export class LightService {
-  public validHueBridgeIp: Observable<boolean>;
+
+  public isActivated$: Observable<boolean>;
+
+  public hueBridgeIp$: Observable<string>;
+  public validHueBridgeIp$: Observable<boolean>;
+
   public isAuthenticated$: Observable<boolean>;
+
   public turnOffAllLights$: Observable<string>;
-  public hueBridgeIp: Observable<string>;
 
   private username: string;
   private hueBridgeUrl: string;
 
+  private readonly HUE_ISACTIVATED_KEY = 'HUE_ACTIVATED';
   private readonly HUE_USERNAME_KEY = 'HUE_USERNAME';
   private readonly HUE_URL_KEY = 'HUE_URL';
+
   constructor(
     private http: HttpClient,
     private localDb: StorageMap,
     private router: Router,
     private toastMessage: HotToastService
   ) {
-    this.hueBridgeIp = localDb
+
+    this.hueBridgeIp$ = localDb
       .get(this.HUE_URL_KEY, { type: 'string' })
       .pipe(tap((res) => (this.hueBridgeUrl = res)));
 
-    this.validHueBridgeIp = this.hueBridgeIp.pipe(
+    this.validHueBridgeIp$ = this.hueBridgeIp$.pipe(
       map((res) => (res ? true : false))
     );
 
     this.isAuthenticated$ = combineLatest([
       localDb.get<boolean>(this.HUE_USERNAME_KEY, { type: 'string' }),
-      this.validHueBridgeIp,
+      this.validHueBridgeIp$,
     ]).pipe(
       map(([username, validIP]) => {
         if (!validIP) {

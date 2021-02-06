@@ -31,6 +31,7 @@
   }
 
   .box {
+    padding: 1rem;
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 0.4rem 2rem 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(0.2rem);
@@ -40,9 +41,15 @@
     min-width: 20rem;
     transition: all 50ms ease;
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     justify-self: center;
+
+    hr {
+      width: 90%;
+      border: 0; border-top: 1px solid #fff;
+    }
 
     &:active {
       box-shadow: 0 0.4rem 2rem 0 rgba(0, 0, 0, 0.37);

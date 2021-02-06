@@ -1,9 +1,17 @@
 <form>
 
-  <p> Philips Hue Server Einstellungen </p>
-  <p> IP </p>
-  <div class="input-row">
+  <h2> Philips Hue Server Einstellungen </h2>
+  <p class="no-margin"> Aktiviert </p>
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider"></span>
+  </label>
 
+
+  <p></p>
+
+  <p class="no-margin"> IP </p>
+  <div class="input-row">
     <input #ipInput (input)='checkIP()' type="text" class="input-frosted">
     <i class="symbol {{validIp}}" ></i>
   </div>
