@@ -1,7 +1,15 @@
 import { Router } from '@angular/router';
-import {Component, OnInit} from '@angular/core';
-import {animate, query, stagger, style, transition, trigger,} from '@angular/animations';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
+import {
+  animate,
+  query,
+  stagger,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { LightService } from 'yah-light';
 
 @Component({
   selector: 'app-start-screen',
@@ -29,22 +37,27 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
   ],
 })
 export class StartScreenComponent implements OnInit {
-
   availableApps: string[];
 
-  constructor(private router: Router) {
-    this.availableApps = Array.of('weather', 'light', 'cleaning');
+  constructor(private router: Router, private lightService: LightService) {
+    this.lightService.isActivated$.subscribe((res) =>
+      res ? this.availableApps.push('light') : null
+    );
+
+    this.availableApps = Array.of('weather', 'cleaning');
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 
   drop(event: CdkDragDrop<string[]>): void {
-    moveItemInArray(this.availableApps, event.previousIndex, event.currentIndex);
+    moveItemInArray(
+      this.availableApps,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 
-  goSettings(){
+  goSettings() {
     this.router.navigate(['setup']).then();
   }
 }

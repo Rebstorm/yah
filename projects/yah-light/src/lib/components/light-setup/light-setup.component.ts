@@ -7,7 +7,7 @@ import {
 } from 'rxjs/operators';
 import { LightService } from './../../services/light.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'yah-light-setup',
@@ -20,6 +20,7 @@ export class LightSetupComponent implements OnInit {
   checkingSubscription: Subscription;
 
   validIp = 'disconnected';
+  isActivated = false;
 
   constructor(private lightService: LightService) {
     this.lightService.hueBridgeIp$.subscribe((res) => {
@@ -28,11 +29,15 @@ export class LightSetupComponent implements OnInit {
         this.validIp = 'connected';
       }
     });
+
+    this.lightService.isActivated$.subscribe((res) => {
+      this.isActivated = res;
+    });
   }
 
   ngOnInit(): void {}
 
-  public checkIP() {
+  public checkIP(): void {
     const input = this.ipInput.nativeElement.value;
 
     if (input.length > 1) {
@@ -56,12 +61,17 @@ export class LightSetupComponent implements OnInit {
         );
     }
   }
-  showErrorMessage() {
+  showErrorMessage(): void {
     this.validIp = 'disconnected';
   }
-  setNewHueValidIp(input: string) {
+  setNewHueValidIp(input: string): void {
     this.checkingSubscription.unsubscribe();
     this.validIp = 'connected';
     this.lightService.saveHueBridgeIp(input).subscribe();
+  }
+
+  setChecked($event: Event): void {
+    const input = $event.target as HTMLInputElement;
+    this.lightService.saveActivated(input.checked).subscribe();
   }
 }

@@ -5,6 +5,7 @@ import {
   empty,
   EMPTY,
   merge,
+  NEVER,
   Observable,
   of,
 } from 'rxjs';
@@ -50,7 +51,6 @@ export interface HueInternalModel {
   providedIn: 'root',
 })
 export class LightService {
-
   public isActivated$: Observable<boolean>;
 
   public hueBridgeIp$: Observable<string>;
@@ -60,6 +60,7 @@ export class LightService {
 
   public turnOffAllLights$: Observable<string>;
 
+  private isActivated: boolean | undefined;
   private username: string;
   private hueBridgeUrl: string;
 
@@ -73,10 +74,29 @@ export class LightService {
     private router: Router,
     private toastMessage: HotToastService
   ) {
+    this.isActivated$ = localDb
+      .get(this.HUE_ISACTIVATED_KEY, { type: 'boolean' })
+      .pipe(tap((res) => (this.isActivated = res)));
 
-    this.hueBridgeIp$ = localDb
-      .get(this.HUE_URL_KEY, { type: 'string' })
-      .pipe(tap((res) => (this.hueBridgeUrl = res)));
+    this.hueBridgeIp$ = combineLatest([
+      localDb.watch(this.HUE_URL_KEY, { type: 'string' }),
+      this.isActivated$,
+    ]).pipe(
+      map(([res, isActivated]) => {
+        if (isActivated === undefined) {
+          this.toastMessage.warning('Lass uns uns sachen erstmal einstellen ', {
+            style: {
+              background: 'rgba(255, 255, 255, 0.8)',
+            },
+            dismissible: true,
+            ariaLive: 'polite',
+          });
+          this.router.navigate(['setup']).then();
+          return;
+        }
+        return res;
+      })
+    );
 
     this.validHueBridgeIp$ = this.hueBridgeIp$.pipe(
       map((res) => (res ? true : false))
@@ -85,11 +105,16 @@ export class LightService {
     this.isAuthenticated$ = combineLatest([
       localDb.get<boolean>(this.HUE_USERNAME_KEY, { type: 'string' }),
       this.validHueBridgeIp$,
+      this.isActivated$,
     ]).pipe(
-      map(([username, validIP]) => {
+      map(([username, validIP, isActivated]) => {
+        if (!isActivated) {
+          return;
+        }
+
         if (!validIP) {
           this.toastMessage.error(
-            'Keine Einstellungen gefunden! Bitte Konfigurieren.',
+            'Leider fehlt informationen von die Philips Hue.',
             {
               style: {
                 background: 'rgba(255, 255, 255, 0.8)',
@@ -98,7 +123,6 @@ export class LightService {
               ariaLive: 'polite',
             }
           );
-          this.router.navigate(['setup']).then();
           return;
         }
         return username;
@@ -222,6 +246,23 @@ export class LightService {
 
     return this.localDb.set(this.HUE_URL_KEY, `http://${formattedIp}/api`, {
       type: 'string',
+    });
+  }
+
+  saveActivated(isActivated: boolean): Observable<null> {
+    this.toastMessage.success(
+      'Philips Hue server Einstellungen sind gespeichert',
+      {
+        style: {
+          background: 'rgba(255, 255, 255, 0.8)',
+        },
+        dismissible: true,
+        ariaLive: 'polite',
+      }
+    );
+
+    return this.localDb.set(this.HUE_ISACTIVATED_KEY, isActivated, {
+      type: 'boolean',
     });
   }
 }

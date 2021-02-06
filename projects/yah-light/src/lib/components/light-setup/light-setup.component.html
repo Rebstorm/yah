@@ -3,7 +3,7 @@
   <h2> Philips Hue Server Einstellungen </h2>
   <p class="no-margin"> Aktiviert </p>
   <label class="switch">
-    <input type="checkbox">
+    <input type="checkbox" (change)="setChecked($event)" [checked]="isActivated">
     <span class="slider"></span>
   </label>
 
