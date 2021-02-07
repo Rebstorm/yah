@@ -102,13 +102,13 @@ export class CleaningService {
 
   public startRobot(): Observable<boolean> {
     return this.http
-      .get(`${this.serverUrl$}/api/local/action/start`, { observe: 'response' })
+      .get(`http://${this.iRobotURL}/api/local/action/start`, { observe: 'response' })
       .pipe(map((response) => !!response.status));
   }
 
   stopRobot(): Observable<boolean> {
     return this.http
-      .get(`${this.serverUrl$}/api/local/action/stop`, { observe: 'response' })
+      .get(`http://${this.iRobotURL}/api/local/action/stop`, { observe: 'response' })
       .pipe(map((response) => !!response.status));
   }
 
