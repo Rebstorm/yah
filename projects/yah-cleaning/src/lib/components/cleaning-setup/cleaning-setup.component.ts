@@ -20,17 +20,33 @@ export class CleaningSetupComponent implements OnInit {
     private cleaningService: CleaningService,
     private toastMessage: HotToastService
   ) {
-
-    this.cleaningService.isActivated$.subscribe( res => {
+    this.cleaningService.isActivated$.subscribe((res) => {
       this.isActivated = res;
-    })
+    });
+
+    this.cleaningService.serverUrl$.subscribe((res) => {
+      this.ipInput.nativeElement.value = res;
+      this.validIp = 'connected';
+    });
   }
 
   ngOnInit(): void {}
 
   setChecked($event: Event): void {
     const input = $event.target as HTMLInputElement;
-    console.log(input);
+    this.cleaningService.saveActivated(input.checked).subscribe(() => {
+      this.toastMessage.success(
+        'Philips Hue server Einstellungen sind gespeichert',
+        {
+          style: {
+            background: 'rgba(255, 255, 255, 0.8)',
+          },
+          dismissible: true,
+          ariaLive: 'polite',
+          id: 'hue-saved',
+        }
+      );
+    });
   }
 
   checkIP(): void {
@@ -43,7 +59,6 @@ export class CleaningSetupComponent implements OnInit {
       if (this.checkingSubscription) {
         this.checkingSubscription.unsubscribe();
       }
-
       this.checkingSubscription = this.cleaningService
         .checkiRobotServer(input)
         .pipe(debounceTime(750), distinctUntilChanged(), take(1))

@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
-import {combineLatest, concat, empty, EMPTY, NEVER, Observable, of} from 'rxjs';
+import {
+  combineLatest,
+  concat,
+  empty,
+  EMPTY,
+  iif,
+  NEVER,
+  Observable,
+  of,
+} from 'rxjs';
 import { HttpClient, HttpEvent, HttpResponse } from '@angular/common/http';
 import {
   delay,
+  filter,
   map,
   repeat,
   switchMap,
+  tap,
   timeout,
   timestamp,
 } from 'rxjs/operators';
@@ -21,6 +32,8 @@ export class CleaningService {
   public isActivated$: Observable<boolean>;
   public serverUrl$: Observable<string>;
   public status$: Observable<CleaningStatus>;
+
+  private iRobotURL;
 
   private readonly IROBOT_IS_ACTIVATED_KEY = 'IROBOT_IS_ACTIVATED';
   private readonly IROBOT_SERVER_URL_KEY = 'IROBOT_SERVER_URL';
@@ -40,7 +53,11 @@ export class CleaningService {
       this.isActivated$,
     ]).pipe(
       map(([res, isActivated]) => {
-        if (isActivated === undefined) {
+        if (!isActivated) {
+          return;
+        }
+
+        if (isActivated === undefined || res === undefined) {
           this.toastMessage.warning('Lass uns uns sachen erstmal einstellen ', {
             style: {
               background: 'rgba(255, 255, 255, 0.8)',
@@ -52,42 +69,35 @@ export class CleaningService {
           return;
         }
         return res;
-      })
+      }),
+      tap((res) => (this.iRobotURL = res))
     );
 
-    this.status$ = this.http
-      .get<CleaningStatus>(`${this.serverUrl$}/api/local/info/mission`)
-      .pipe(
-        timestamp(),
-        switchMap(({ timestamp: ts, value: value }) =>
-          concat(of(value), EMPTY.pipe(delay(60000)))
-        ),
-        repeat()
-      );
+    this.status$ = this.serverUrl$.pipe(
+      filter((serverUrl) => !!serverUrl),
+      switchMap((serverUrl) => {
+        return this.http
+          .get<CleaningStatus>(`http://${serverUrl}/api/local/info/mission`)
+          .pipe(
+            timestamp(),
+            switchMap(({ timestamp: ts, value: value }) =>
+              concat(of(value), EMPTY.pipe(delay(60000)))
+            ),
+            repeat()
+          );
+      })
+    );
   }
 
   public checkiRobotServer(ip: string): Observable<HttpResponse<any>> {
     let formattedIp = ip.replace('http://', '');
-    formattedIp = formattedIp.replace('/api/mission', '');
+    formattedIp = formattedIp.replace('/api/local/info/mission', '');
     formattedIp = formattedIp.replace('/', '');
-    return this.isIp(formattedIp)
-      ? this.http
-          .get<HttpResponse<any>>(`http://${formattedIp}/api/randomResource`, {
-            observe: 'response',
-          })
-          .pipe(timeout(3000))
-      : empty();
-  }
-
-  private isIp(ipaddress: string): boolean {
-    if (
-      /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
-        ipaddress
-      )
-    ) {
-      return true;
-    }
-    return false;
+    return this.http
+      .get<HttpResponse<any>>(`http://${formattedIp}/api/local/info/mission`, {
+        observe: 'response',
+      })
+      .pipe(timeout(3000));
   }
 
   public startRobot(): Observable<boolean> {
@@ -103,6 +113,14 @@ export class CleaningService {
   }
 
   saveiRobotIp(input: string): Observable<null> {
-    return NEVER;
+    return this.localDb.set(this.IROBOT_SERVER_URL_KEY, input, {
+      type: 'string',
+    });
+  }
+
+  saveActivated(isActivated: boolean): Observable<null> {
+    return this.localDb.set(this.IROBOT_IS_ACTIVATED_KEY, isActivated, {
+      type: 'boolean',
+    });
   }
 }
