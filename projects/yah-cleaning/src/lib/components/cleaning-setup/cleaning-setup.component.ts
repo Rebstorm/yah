@@ -25,8 +25,8 @@ export class CleaningSetupComponent implements OnInit {
     });
 
     this.cleaningService.serverUrl$.subscribe((res) => {
-      this.ipInput.nativeElement.value = res;
-      this.validIp = 'connected';
+      this.ipInput.nativeElement.value = res ? res : '';
+      this.validIp = res ? 'connected' : 'disconnected';
     });
   }
 
@@ -36,7 +36,7 @@ export class CleaningSetupComponent implements OnInit {
     const input = $event.target as HTMLInputElement;
     this.cleaningService.saveActivated(input.checked).subscribe(() => {
       this.toastMessage.success(
-        'Philips Hue server Einstellungen sind gespeichert',
+        'iRobot Server Einstellungen sind gespeichert',
         {
           style: {
             background: 'rgba(255, 255, 255, 0.8)',
@@ -81,8 +81,9 @@ export class CleaningSetupComponent implements OnInit {
     this.checkingSubscription.unsubscribe();
     this.validIp = 'connected';
     this.cleaningService.saveiRobotIp(input).subscribe(() => {
+      this.ipInput.nativeElement.value = input;
       this.toastMessage.success(
-        'Philips Hue server Einstellungen sind gespeichert',
+        'iRobot Server Einstellungen sind gespeichert',
         {
           style: {
             background: 'rgba(255, 255, 255, 0.8)',

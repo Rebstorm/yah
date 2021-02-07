@@ -3,7 +3,6 @@ form {
   display: flex;
   justify-content: center;
   flex-direction: column;
-
   .no-margin {
     margin: 0;
   }
@@ -22,6 +21,8 @@ form {
       backdrop-filter: blur(0.2rem);
       -webkit-backdrop-filter: blur(0.2rem);
       border-radius: 0.7rem;
+      max-width: 90%;
+
     }
 
 

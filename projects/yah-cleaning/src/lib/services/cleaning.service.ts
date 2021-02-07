@@ -30,7 +30,7 @@ import { Router } from '@angular/router';
 })
 export class CleaningService {
   public isActivated$: Observable<boolean>;
-  public serverUrl$: Observable<string>;
+  public serverUrl$: Observable<string | undefined>;
   public status$: Observable<CleaningStatus>;
 
   private iRobotURL;
