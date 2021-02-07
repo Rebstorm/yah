@@ -1,1 +1,21 @@
-<p>cleaning-setup works!</p>
+<form>
+
+  <h2> iRobot Server Einstellungen </h2>
+  <p class="no-margin"> Aktiviert </p>
+  <label class="switch">
+    <input type="checkbox" (change)="setChecked($event)" [checked]="isActivated">
+    <span class="slider"></span>
+  </label>
+
+
+  <p></p>
+
+  <p class="no-margin"> IP </p>
+  <div class="input-row">
+    <input #ipInput (input)='checkIP()' type="text" class="input-frosted">
+    <i class="symbol {{validIp}}" ></i>
+  </div>
+</form>
+
+
+<!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->

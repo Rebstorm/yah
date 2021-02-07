@@ -1,13 +1,8 @@
-import {
-  debounceTime,
-  distinctUntilChanged,
-  distinctUntilKeyChanged,
-  take,
-  tap,
-} from 'rxjs/operators';
-import { LightService } from './../../services/light.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import {debounceTime, distinctUntilChanged, take,} from 'rxjs/operators';
+import {LightService} from './../../services/light.service';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {HotToastService} from '@ngneat/hot-toast';
 
 @Component({
   selector: 'yah-light-setup',
@@ -22,7 +17,10 @@ export class LightSetupComponent implements OnInit {
   validIp = 'disconnected';
   isActivated = false;
 
-  constructor(private lightService: LightService) {
+  constructor(
+    private lightService: LightService,
+    private toastMessage: HotToastService
+  ) {
     this.lightService.hueBridgeIp$.subscribe((res) => {
       if (res) {
         this.ipInput.nativeElement.value = res;
@@ -67,11 +65,35 @@ export class LightSetupComponent implements OnInit {
   setNewHueValidIp(input: string): void {
     this.checkingSubscription.unsubscribe();
     this.validIp = 'connected';
-    this.lightService.saveHueBridgeIp(input).subscribe();
+    this.lightService.saveHueBridgeIp(input).subscribe(() => {
+      this.toastMessage.success(
+        'Philips Hue server Einstellungen sind gespeichert',
+        {
+          style: {
+            background: 'rgba(255, 255, 255, 0.8)',
+          },
+          dismissible: true,
+          ariaLive: 'polite',
+          id: 'hue-saved'
+        }
+      );
+    });
   }
 
   setChecked($event: Event): void {
     const input = $event.target as HTMLInputElement;
-    this.lightService.saveActivated(input.checked).subscribe();
+    this.lightService.saveActivated(input.checked).subscribe(() => {
+      this.toastMessage.success(
+        'Philips Hue server Einstellungen sind gespeichert',
+        {
+          style: {
+            background: 'rgba(255, 255, 255, 0.8)',
+          },
+          dismissible: true,
+          ariaLive: 'polite',
+          id: 'hue-saved',
+        }
+      );
+    });
   }
 }

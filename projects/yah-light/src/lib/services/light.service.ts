@@ -217,7 +217,7 @@ export class LightService {
       : empty();
   }
 
-  public isIp(ipaddress: string): boolean {
+  private isIp(ipaddress: string): boolean {
     if (
       /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
         ipaddress
@@ -233,36 +233,12 @@ export class LightService {
     formattedIp = formattedIp.replace('/api', '');
     formattedIp = formattedIp.replace('/', '');
 
-    this.toastMessage.success(
-      'Philips Hue server Einstellungen sind gespeichert',
-      {
-        style: {
-          background: 'rgba(255, 255, 255, 0.8)',
-        },
-        dismissible: true,
-        ariaLive: 'polite',
-        id: 'hue-saved'
-      }
-    );
-
     return this.localDb.set(this.HUE_URL_KEY, `http://${formattedIp}/api`, {
       type: 'string',
     });
   }
 
   saveActivated(isActivated: boolean): Observable<null> {
-    this.toastMessage.success(
-      'Philips Hue server Einstellungen sind gespeichert',
-      {
-        style: {
-          background: 'rgba(255, 255, 255, 0.8)',
-        },
-        dismissible: true,
-        ariaLive: 'polite',
-        id: 'hue-saved'
-      }
-    );
-
     return this.localDb.set(this.HUE_ISACTIVATED_KEY, isActivated, {
       type: 'boolean',
     });
