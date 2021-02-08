@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-import { environment } from '../yah/src/environments/environment';
+import { environment } from './yah/src/environments/environment';
 
 function createWindow(): void {
   // Create the browser window.

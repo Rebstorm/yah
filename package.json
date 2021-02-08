@@ -1,6 +1,7 @@
 {
   "name": "yah",
   "version": "0.1.0",
+  "main": "electron-wrapper.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,8 +11,9 @@
     "e2e": "ng e2e",
     "postinstall": "npm run build-all",
     "build-all": "ng b yah-light && ng b yah-weather && ng b yah-cleaning",
-    "build-electron": "npm run build-all && npm run build && tsc projects/electron-wrapper/electron-main.ts --outDir ./dist",
-    "start-electron": "npm run build-all && npm run build && tsc projects/electron-wrapper/electron-main.ts --outDir ./dist && electron ./dist/electron-main.js "
+    "build-electron": "npm run build-all && npm run build && tsc projects/electron-wrapper.ts --outDir ./dist",
+    "start-electron": "npm run build-electron && electron ./dist/main.js ",
+    "build-executables": "npm run build-electron && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=x64 --asar --out=./bin/"
   },
   "private": true,
   "dependencies": {
