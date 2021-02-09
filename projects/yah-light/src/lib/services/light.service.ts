@@ -95,7 +95,8 @@ export class LightService {
           return;
         }
         return res;
-      })
+      }),
+      tap((res) => (this.hueBridgeUrl = res))
     );
 
     this.validHueBridgeIp$ = this.hueBridgeIp$.pipe(
@@ -132,9 +133,6 @@ export class LightService {
       }),
       map((localIndexDb) => {
         return localIndexDb ? true : false;
-      }),
-      switchMap((isAuthenticated) => {
-        return isAuthenticated ? of(true) : this.registerAppToBridge();
       })
     );
 
@@ -170,9 +168,9 @@ export class LightService {
     );
   }
 
-  private registerAppToBridge(): Observable<boolean> {
+  public registerAppToBridge(): Observable<boolean> {
     // TODO: incase of adding another screen, make this more dynamic
-    const query = this.http
+    return this.http
       .post<HueInternalModel[]>(
         this.hueBridgeUrl,
         { devicetype: 'homescreen#homescreen_1' },
@@ -200,8 +198,6 @@ export class LightService {
         ),
         repeat()
       );
-
-    return query;
   }
 
   public checkHueBridgeIp(ip: string): Observable<HttpResponse<any>> {

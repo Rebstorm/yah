@@ -14,11 +14,12 @@ export class LightButtonComponent implements OnInit, OnDestroy {
   clickHueButton = false;
 
   isAuthenticatedSub: Subscription;
+  registerAuthBridge: Subscription;
 
   constructor(
     private lightsService: LightService,
     private ngxSpinnerService: NgxSpinnerService,
-    private hotToast: HotToastService,
+    private hotToast: HotToastService
   ) {
     this.isAuthenticatedSub = this.lightsService.isAuthenticated$.subscribe(
       (authenticated) =>
@@ -35,23 +36,31 @@ export class LightButtonComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   private tellUserToAuthenticate(): void {
-    this.hotToast.show(
-      'Philips Hue Brauche Ihre Aufmerksamkeit!',
-      {
-        style: {
-          background: 'rgba(255, 255, 255, 0.8)',
-        },
-        id: 'philips-hue',
-        ariaLive: 'polite',
-      })
-    this.clickHueButton = true;
-    this.ngxSpinnerService.show('light-auth-spinner');
+    this.registerAuthBridge = this.lightsService
+      .registerAppToBridge()
+      .subscribe((isAuthed) => {
+        if (!isAuthed) {
+          this.hotToast.show('Philips Hue Brauche Ihre Aufmerksamkeit!', {
+            style: {
+              background: 'rgba(255, 255, 255, 0.8)',
+            },
+            id: 'philips-hue',
+            ariaLive: 'polite',
+          });
+          this.clickHueButton = true;
+          this.ngxSpinnerService.show('light-auth-spinner');
+        } else {
+          this.setupLightConnection();
+          this.registerAuthBridge.unsubscribe();
+        }
+      });
   }
 
   private setupLightConnection(): void {
+    console.log('we authenticated?');
     this.clickHueButton = false;
 
-    // TODO: Maybe find a way to make this function better in the subscriber. 
+    // TODO: Maybe find a way to make this function better in the subscriber.
     this.isAuthenticatedSub.unsubscribe();
   }
 
