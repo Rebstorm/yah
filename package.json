@@ -26,7 +26,7 @@
     "@angular/platform-browser": "11.1.2",
     "@angular/platform-browser-dynamic": "11.1.2",
     "@angular/router": "11.1.2",
-    "@ngneat/hot-toast": "1.0.4",
+    "@ngneat/hot-toast": "1.0.6",
     "@ngneat/overview": "1.0.0",
     "@ngx-pwa/local-storage": "11.1.0",
     "ngx-spinner": "10.0.1",
