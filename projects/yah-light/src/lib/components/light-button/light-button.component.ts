@@ -30,7 +30,9 @@ export class LightButtonComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.isAuthenticatedSub.unsubscribe();
+    if (!this.isAuthenticatedSub.closed){
+      this.isAuthenticatedSub.unsubscribe();
+    }
   }
 
   ngOnInit(): void {}
@@ -57,14 +59,14 @@ export class LightButtonComponent implements OnInit, OnDestroy {
   }
 
   private setupLightConnection(): void {
-    console.log('we authenticated?');
     this.clickHueButton = false;
 
-    // TODO: Maybe find a way to make this function better in the subscriber.
-    this.isAuthenticatedSub.unsubscribe();
+    if (this.isAuthenticatedSub && !this.isAuthenticatedSub.closed) {
+      this.isAuthenticatedSub.unsubscribe();
+    }
   }
 
-  turnOffAllLights(): void {
+  public turnOffAllLights(): void {
     this.lightsService.turnOffAllLights$
       .pipe(take(1))
       .subscribe((res) => console.log(res));

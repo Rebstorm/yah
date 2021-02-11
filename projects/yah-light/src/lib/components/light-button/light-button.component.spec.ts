@@ -1,6 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LightButtonComponent } from './light-button.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HotToastModule } from '@ngneat/hot-toast';
+import { LightSetupComponent } from '../light-setup/light-setup.component';
+import { LightService } from '../../services/light.service';
+import { of, Subject, Subscription } from 'rxjs';
+import { By } from '@angular/platform-browser';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('LightButtonComponent', () => {
   let component: LightButtonComponent;
@@ -8,9 +16,25 @@ describe('LightButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LightButtonComponent ]
-    })
-    .compileComponents();
+      imports: [
+        NgxSpinnerModule,
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([
+          { path: 'setup', component: LightSetupComponent },
+        ]),
+        HotToastModule,
+      ],
+      providers: [
+        {
+          provide: LightService,
+          useValue: {
+            registerAppToBridge: () => of(true),
+            isAuthenticated$: of(true),
+          },
+        },
+      ],
+      declarations: [LightButtonComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +45,31 @@ describe('LightButtonComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('UI', () => {
+    it('should, if the user is authenticated not show the clickHueButton', () => {
+      component.clickHueButton = false;
+      fixture.detectChanges();
+
+      expect(fixture.debugElement.query(By.css('ngx-spinner'))).toBeNull();
+      expect(component.clickHueButton).toBeFalse();
+    });
+
+    it('should show the ngx-spinner, if the clickHueButton is true', () => {
+      component.clickHueButton = true;
+      fixture.detectChanges();
+
+      expect(fixture.debugElement.query(By.css('ngx-spinner'))).toBeDefined();
+    });
+  });
+
+  describe('Philips hue', () => {
+    it('should warn the user, if the ue bridge hasnt been registered', () => {
+      component.registerAuthBridge = new Subscription();
+      (component as any).tellUserToAuthenticate();
+
+      expect(fixture.debugElement.query(By.css('ngx-spinner'))).toBeDefined();
+    });
   });
 });

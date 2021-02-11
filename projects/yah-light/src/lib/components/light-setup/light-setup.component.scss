@@ -32,15 +32,15 @@ form {
       height: 2rem;
       margin-left: 0.5rem;
       &.connected {
-        background: url("./assets/tick.svg") no-repeat;
+        background: url("../../../assets/tick.svg") no-repeat;
       }
 
       &.disconnected {
-        background: url("./assets/close.svg") center no-repeat;
+        background: url("../../../assets/close.svg") center no-repeat;
 
       }
       &.loading {
-        background: url("./assets/loading.svg");
+        background: url("../../../assets/loading.svg");
         background-size: contain;
       }
     }

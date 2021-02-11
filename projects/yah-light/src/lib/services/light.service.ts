@@ -1,40 +1,10 @@
-import { Injectable } from '@angular/core';
-import {
-  combineLatest,
-  concat,
-  empty,
-  EMPTY,
-  merge,
-  NEVER,
-  Observable,
-  of,
-} from 'rxjs';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpResponse,
-} from '@angular/common/http';
-import {
-  debounceTime,
-  delay,
-  expand,
-  filter,
-  map,
-  repeat,
-  repeatWhen,
-  switchMap,
-  take,
-  takeLast,
-  takeWhile,
-  tap,
-  timeout,
-  timestamp,
-} from 'rxjs/operators';
-import { StorageMap } from '@ngx-pwa/local-storage';
-import { Router } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
-import { Url } from 'url';
-import { UrlResolver } from '@angular/compiler';
+import {Injectable} from '@angular/core';
+import {combineLatest, concat, empty, EMPTY, Observable, of,} from 'rxjs';
+import {HttpClient, HttpResponse,} from '@angular/common/http';
+import {delay, filter, map, repeat, switchMap, take, tap, timeout, timestamp,} from 'rxjs/operators';
+import {StorageMap} from '@ngx-pwa/local-storage';
+import {Router} from '@angular/router';
+import {HotToastService} from '@ngneat/hot-toast';
 
 export interface HueInternalModel {
   error?: {
