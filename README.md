@@ -9,7 +9,10 @@
 
 
 ### Things to do
-- [ ] Package as Ionic App (Electron first, Android second)
-- [ ] Create a better setup
+- [x] Electron implementation
+- [ ] Package as Ionic App (Android)
+- [x] Create a better setup
 - [ ] Make it a PWA.
-- [ ] More APIs? Like home connect, etc.
+- [ ] Implement Solaredge
+- [ ] Create better testing scenario
+- [ ] Make a GitHub action
