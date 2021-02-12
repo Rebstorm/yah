@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CleaningButtonComponent } from './cleaning-button.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('YahCleaningComponent', () => {
   let component: CleaningButtonComponent;
@@ -8,6 +10,7 @@ describe('YahCleaningComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, RouterTestingModule],
       declarations: [ CleaningButtonComponent ]
     })
     .compileComponents();

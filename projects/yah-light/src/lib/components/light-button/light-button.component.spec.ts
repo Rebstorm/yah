@@ -65,11 +65,20 @@ describe('LightButtonComponent', () => {
   });
 
   describe('Philips hue', () => {
-    it('should warn the user, if the ue bridge hasnt been registered', () => {
+    it('should warn the user, if the hue bridge hasnt been registered', () => {
       component.registerAuthBridge = new Subscription();
       (component as any).tellUserToAuthenticate();
 
       expect(fixture.debugElement.query(By.css('ngx-spinner'))).toBeDefined();
+    });
+
+    it('should turn off all lights, if the turn off button was clicked', () => {
+      const turnOfAllLights = spyOn(component, 'turnOffAllLights');
+
+      const button = fixture.debugElement.query(By.css('.glass-button'));
+      button.triggerEventHandler('click', {});
+
+      expect(turnOfAllLights).toHaveBeenCalledTimes(1);
     });
   });
 });
