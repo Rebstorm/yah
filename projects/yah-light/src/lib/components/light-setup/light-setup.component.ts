@@ -1,8 +1,8 @@
-import {debounceTime, distinctUntilChanged, take,} from 'rxjs/operators';
-import {LightService} from './../../services/light.service';
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {HotToastService} from '@ngneat/hot-toast';
+import { debounceTime, distinctUntilChanged, take } from 'rxjs/operators';
+import { LightService } from './../../services/light.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'yah-light-setup',
@@ -59,10 +59,10 @@ export class LightSetupComponent implements OnInit {
         );
     }
   }
-  showErrorMessage(): void {
+  public showErrorMessage(): void {
     this.validIp = 'disconnected';
   }
-  setNewHueValidIp(input: string): void {
+  public setNewHueValidIp(input: string): void {
     this.checkingSubscription.unsubscribe();
     this.validIp = 'connected';
     this.lightService.saveHueBridgeIp(input).subscribe(() => {
@@ -74,13 +74,13 @@ export class LightSetupComponent implements OnInit {
           },
           dismissible: true,
           ariaLive: 'polite',
-          id: 'hue-saved'
+          id: 'hue-saved',
         }
       );
     });
   }
 
-  setChecked($event: Event): void {
+  public setChecked($event: Event): void {
     const input = $event.target as HTMLInputElement;
     this.lightService.saveActivated(input.checked).subscribe(() => {
       this.toastMessage.success(
