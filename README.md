@@ -1,5 +1,6 @@
-![Alt Text](yah.gif)
 ![Angular CI](https://github.com/Rebstorm/yah/workflows/Angular%20CI/badge.svg)
+
+![Alt Text](yah.gif)
 # Yah - _Yet Another Homescreen_
  _Yet Another Homescreen_, is a home automation system that simplifies your life by letting you control your smart home appliances right from one screen. Connect it to a RaspPi and you have a functional home smart hub centre.
  
