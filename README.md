@@ -17,4 +17,4 @@
 - [ ] Make it a PWA.
 - [ ] Implement Solaredge
 - [x] Create better testing scenario
-- [ ] Make a GitHub action
+- [x] Make a GitHub action
