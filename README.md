@@ -1,3 +1,4 @@
+![Jasmine Tests (Integration/Unit)](https://github.com/Rebstorm/yah/workflows/Jasmine%20Tests%20(Integration/Unit)/badge.svg)
 
 ![Alt Text](yah.gif)
 # Yah - _Yet Another Homescreen_
