@@ -34,5 +34,5 @@ jobs:
           npm run test-yah-light
           npm run test-yah-cleaning
           npm run test-yah-weather
-          npm run test
+          npm run test-yah
           echo All tests run succesful
