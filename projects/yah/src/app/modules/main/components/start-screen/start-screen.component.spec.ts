@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StartScreenComponent } from './start-screen.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('StartScreenComponent', () => {
   let component: StartScreenComponent;
@@ -8,7 +11,8 @@ describe('StartScreenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StartScreenComponent ]
+      declarations: [ StartScreenComponent ],
+      imports: [ RouterTestingModule, RouterTestingModule, HttpClientTestingModule, BrowserAnimationsModule ]
     })
     .compileComponents();
   });
