@@ -18,3 +18,4 @@
 - [ ] Implement Solaredge
 - [x] Create better testing scenario
 - [x] Make a GitHub action
+- [ ] Automate the electron packaging process in a workflow 
