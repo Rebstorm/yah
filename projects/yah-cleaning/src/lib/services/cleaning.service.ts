@@ -106,19 +106,19 @@ export class CleaningService {
       .pipe(map((response) => !!response.status));
   }
 
-  stopRobot(): Observable<boolean> {
+  public stopRobot(): Observable<boolean> {
     return this.http
       .get(`http://${this.iRobotURL}/api/local/action/stop`, { observe: 'response' })
       .pipe(map((response) => !!response.status));
   }
 
-  saveiRobotIp(input: string): Observable<null> {
+  public saveiRobotIp(input: string): Observable<null> {
     return this.localDb.set(this.IROBOT_SERVER_URL_KEY, input, {
       type: 'string',
     });
   }
 
-  saveActivated(isActivated: boolean): Observable<null> {
+  public saveActivated(isActivated: boolean): Observable<null> {
     return this.localDb.set(this.IROBOT_IS_ACTIVATED_KEY, isActivated, {
       type: 'boolean',
     });
