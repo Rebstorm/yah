@@ -10,6 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "npm run build-all",
+    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "build-all": "ng b yah-light && ng b yah-weather && ng b yah-cleaning",
     "build-electron": "npm run build-all && npm run build && tsc projects/electron-wrapper.ts --outDir ./dist",
     "start-electron": "npm run build-electron && electron ./dist/main.js ",

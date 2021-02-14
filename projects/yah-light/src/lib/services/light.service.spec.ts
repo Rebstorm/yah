@@ -1,10 +1,8 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import {TestBed, waitForAsync} from '@angular/core/testing';
 
-import { LightService } from './light.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { StorageMap } from '@ngx-pwa/local-storage';
-import { take } from 'rxjs/operators';
+import {LightService} from './light.service';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('LightService', () => {
   let service: LightService;
@@ -26,7 +24,7 @@ describe('LightService', () => {
       'if the localStorage does NOT contain a valid HUE_ACTIAVTED_KEY, then return false',
       waitForAsync(() => {
         service.isActivated$.toPromise().then((res) => {
-          expect(res).toBeFalse();
+          expect(res).toBeUndefined();
         });
       })
     );
