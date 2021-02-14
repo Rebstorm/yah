@@ -1,4 +1,3 @@
-![Angular CI](https://github.com/Rebstorm/yah/workflows/Angular%20CI/badge.svg)
 
 ![Alt Text](yah.gif)
 # Yah - _Yet Another Homescreen_
