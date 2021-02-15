@@ -22,7 +22,7 @@ function createWindow(): void {
   );
 
   // Open the DevTools.
-  if (!environment.production) {
+  if (environment && !environment.production) {
     mainWindow.webContents.openDevTools();
   }
 }
