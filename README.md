@@ -14,8 +14,8 @@
 - [x] Electron implementation
 - [ ] Package as Ionic App (Android)
 - [x] Create a better setup
-- [ ] Make it a PWA.
-- [ ] Implement Solaredge
+- [x] Make it a PWA.
+- [ ] Implement SolarEdge
 - [x] Create better testing scenario
 - [x] Make a GitHub action
 - [ ] Automate the electron packaging process in a workflow 

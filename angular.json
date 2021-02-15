@@ -40,7 +40,8 @@
                 "glob": "**/*",
                 "input": "projects/yah-cleaning/src/assets",
                 "output": "assets"
-              }
+              },
+              "projects/yah/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/yah/src/styles.scss"
@@ -73,7 +74,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/yah/ngsw-config.json"
             }
           }
         },
@@ -103,7 +106,8 @@
             "karmaConfig": "projects/yah/karma.conf.js",
             "assets": [
               "projects/yah/src/favicon.ico",
-              "projects/yah/src/assets"
+              "projects/yah/src/assets",
+              "projects/yah/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/yah/src/styles.scss"
