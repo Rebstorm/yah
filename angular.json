@@ -261,6 +261,46 @@
           }
         }
       }
+    },
+    "yah-solar": {
+      "projectType": "library",
+      "root": "projects/yah-solar",
+      "sourceRoot": "projects/yah-solar/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/yah-solar/tsconfig.lib.json",
+            "project": "projects/yah-solar/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/yah-solar/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/yah-solar/src/test.ts",
+            "tsConfig": "projects/yah-solar/tsconfig.spec.json",
+            "karmaConfig": "projects/yah-solar/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/yah-solar/tsconfig.lib.json",
+              "projects/yah-solar/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "yah"

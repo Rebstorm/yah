@@ -7,6 +7,7 @@ import {WeatherModule} from 'yah-weather';
 import { LightModule } from 'yah-light';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CleaningModule} from 'yah-cleaning';
+import {SolarModule} from '../../../../../yah-solar/src/lib/solar.module';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
     DragDropModule,
     RouterModule.forChild(routes),
     CleaningModule,
+    SolarModule,
   ]
 })
 export class MainModule { }

@@ -53,7 +53,7 @@ export class StartScreenComponent implements OnInit {
       res ? this.availableApps.push('cleaning') : null;
     });
 
-    this.availableApps = Array.of('weather');
+    this.availableApps = Array.of('weather', 'solar');
   }
 
   ngOnInit(): void {}
