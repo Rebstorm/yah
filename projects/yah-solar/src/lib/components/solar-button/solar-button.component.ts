@@ -8,7 +8,7 @@ import { SolarService } from '../../services/solar.service';
 })
 export class SolarButtonComponent implements OnInit {
   constructor(private solarService: SolarService) {
-    this.solarService.currentPower$.subscribe((res) => console.log(res));
+    this.solarService.currentPower$.subscribe((res) => console.log(res.siteCurrentPowerFlow.PV.currentPower));
   }
 
   ngOnInit(): void {}
