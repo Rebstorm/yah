@@ -14,7 +14,7 @@
   <div class="forecast next-hour">
     <div>Jetzt</div>
     <div>
-      <img src="./assets/{{ currentIcon }}.png" />
+      <img src="./assets/{{ currentIcon ? currentIcon : 'cloudy' }}.png" />
       {{ currentDegrees }}&#8451;
     </div>
   </div>
@@ -24,13 +24,13 @@
       <div class="ternary-content">
         <div>Nächste Stunde</div>
         <div>
-          <img class="ternary-image"  src="./assets/{{ nextHourIcon }}.png" />
+          <img class="ternary-image"  src="./assets/{{ nextHourIcon ? nextHourIcon : 'cloudy' }}.png" />
         </div>
       </div>
       <div class="ternary-content">
         <div>Nächste 12 Stunden</div>
         <div>
-          <img class="ternary-image" src="./assets/{{ next12HoursIcon }}.png" />
+          <img class="ternary-image" src="./assets/{{ next12HoursIcon ? next12HoursIcon : 'cloudy' }}.png" />
         </div>
       </div>
     </div>

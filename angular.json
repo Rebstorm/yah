@@ -41,6 +41,11 @@
                 "input": "projects/yah-cleaning/src/assets",
                 "output": "assets"
               },
+              {
+                "glob": "**/*",
+                "input": "projects/yah-solar/src/assets",
+                "output": "assets"
+              },
               "projects/yah/src/manifest.webmanifest"
             ],
             "styles": [
