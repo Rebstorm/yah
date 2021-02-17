@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SolarService } from '../../services/solar.service';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { SolarEdgePowerFlow } from 'yah-solar';
 
 @Component({
   selector: 'yah-solar-button',
@@ -9,13 +10,17 @@ import { HotToastService } from '@ngneat/hot-toast';
   styleUrls: ['./solar-button.component.scss'],
 })
 export class SolarButtonComponent implements OnInit {
+  pvLoad = '';
+  gridLoad = '';
+  load = '';
+
   constructor(
     private solarService: SolarService,
     private router: Router,
     private hotToast: HotToastService
   ) {
     this.solarService.currentPower$.subscribe(
-      (res) => console.log(res.siteCurrentPowerFlow.PV.currentPower),
+      (res) => this.paintNumbers(res),
       (error) => {
         this.hotToast.error(
           `SolarEdge Brauche Ihr aufmerksamkeit: ${error.error.String}`,
@@ -33,4 +38,10 @@ export class SolarButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  private paintNumbers(edgePowerFlow: SolarEdgePowerFlow): void {
+    this.pvLoad = edgePowerFlow.siteCurrentPowerFlow.PV.currentPower.toString();
+    this.gridLoad = edgePowerFlow.siteCurrentPowerFlow.GRID.currentPower.toString();
+    this.load =  edgePowerFlow.siteCurrentPowerFlow.LOAD.currentPower.toString();
+  }
 }
