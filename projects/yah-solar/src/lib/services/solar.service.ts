@@ -23,6 +23,8 @@ export class SolarService {
   private SOLAR_SITE_ID_KEY = 'SOLAR_EDGE_SITE_ID';
   private SOLAR_SITE_API_KEY = 'SOLAR_EDGE_API_KEY';
 
+
+
   constructor(private http: HttpClient, private localDb: StorageMap) {
     this.isActivated$ = this.localDb
       .get(this.SOLAR_IS_ACTIVATED_KEY, { type: 'boolean' })
@@ -64,7 +66,8 @@ export class SolarService {
               .pipe(
                 timestamp(),
                 switchMap(({ timestamp: ts, value: value }) =>
-                  concat(of(value), EMPTY.pipe(delay(10000)))
+                  // update every 10 min.
+                  concat(of(value), EMPTY.pipe(delay(600000)))
                 ),
                 repeat()
               )
