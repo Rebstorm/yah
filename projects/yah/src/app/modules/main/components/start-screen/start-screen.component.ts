@@ -11,6 +11,7 @@ import {
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { LightService } from 'yah-light';
 import { CleaningService } from 'yah-cleaning';
+import { SolarService } from 'yah-solar';
 
 @Component({
   selector: 'app-start-screen',
@@ -43,17 +44,28 @@ export class StartScreenComponent implements OnInit {
   constructor(
     private router: Router,
     private lightService: LightService,
-    private cleaningService: CleaningService
+    private cleaningService: CleaningService,
+    private solarService: SolarService
   ) {
     this.lightService.isActivated$.subscribe((res) =>
-      res ? this.availableApps.push('light') : null
+      res
+        ? this.availableApps.push('light')
+        : this.availableApps.filter((value) => value === 'light')
     );
 
     this.cleaningService.isActivated$.subscribe((res) => {
-      res ? this.availableApps.push('cleaning') : null;
+      res
+        ? this.availableApps.push('cleaning')
+        : this.availableApps.filter((value) => value === 'cleaning');
     });
 
-    this.availableApps = Array.of('weather', 'solar');
+    this.solarService.isActivated$.subscribe((res) => {
+      res
+        ? this.availableApps.push('solar')
+        : this.availableApps.filter((value) => value === 'solar');
+    });
+
+    this.availableApps = Array.of('weather');
   }
 
   ngOnInit(): void {}

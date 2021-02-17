@@ -3,7 +3,7 @@
   <h2> <img src="assets/solar-panel.svg" width="32"> SolarEdge Einstellungen </h2>
   <p class="no-margin"> Aktiviert </p>
   <label class="switch">
-    <input type="checkbox" (change)="setChecked($event)" [checked]="isActivated">
+    <input #activateToggle type="checkbox" (change)="setChecked($event)" [checked]="isActivated">
     <span class="slider"></span>
   </label>
 
@@ -12,13 +12,13 @@
 
   <p class="no-margin"> SiteId </p>
   <div class="input-row">
-    <input #siteId (input)='setSiteId()' type="text" class="input-frosted">
+    <input #siteId (input)='setSiteId($event)' type="text" class="input-frosted">
     <i class="symbol {{validSiteId}}" ></i>
   </div>
 
   <p class="no-margin"> Api Key </p>
   <div class="input-row">
-    <input #apiKey (input)='setApiKey()' type="text" class="input-frosted">
+    <input #apiKey (input)='setApiKey($event)' type="text" class="input-frosted">
     <i class="symbol {{validApiKey}}" ></i>
   </div>
 
