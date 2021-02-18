@@ -5,17 +5,12 @@
  _Yet Another Homescreen_, is a home automation system that simplifies your life by letting you control your smart home appliances right from one screen. Connect it to a RaspPi and you have a functional home smart hub centre.
  
 ## Currently supported systems
-- Philips Hue
-- YR weather services
+- [Philips Hue](https://www.philips-hue.com/)
+- [YR](https://www.yr.no/)
 - iRobot (together with the [Rest 980 API](https://github.com/koalazak/rest980))
+- [SolarEdge](https://www.solaredge.com/)
 
 
 ### Things to do
-- [x] Electron implementation
 - [ ] Package as Ionic App (Android)
-- [x] Create a better setup
-- [x] Make it a PWA.
-- [ ] Implement SolarEdge
-- [x] Create better testing scenario
-- [x] Make a GitHub action
 - [ ] Automate the electron packaging process in a workflow 
