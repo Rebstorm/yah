@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/yah-light",
+  "dest": "../../dist/yah-solar",
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
@@ -9,5 +9,6 @@
       "ngx-spinner": "ngx-spinner"
     }
   },
+
   "assets": ["src/assets"]
 }

@@ -6,7 +6,9 @@ import { environment } from './yah/src/environments/environment';
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    webPreferences: {},
+    webPreferences: {
+      webSecurity: false,
+    },
     fullscreen: true,
   });
 
@@ -20,7 +22,7 @@ function createWindow(): void {
   );
 
   // Open the DevTools.
-  if (!environment.production) {
+  if (environment && !environment.production) {
     mainWindow.webContents.openDevTools();
   }
 }

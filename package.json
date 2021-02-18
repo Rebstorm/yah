@@ -1,6 +1,6 @@
 {
   "name": "yah",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "electron-wrapper.js",
   "scripts": {
     "ng": "ng",
@@ -13,10 +13,11 @@
     "test-yah-light": "ng test yah-light --watch=false --browsers=ChromeHeadless",
     "test-yah-cleaning": "ng test yah-cleaning --watch=false --browsers=ChromeHeadless",
     "test-yah-weather": "ng test yah-weather --watch=false --browsers=ChromeHeadless",
+    "test-yah-solar": "ng test yah-solar --watch=false --browsers=ChromeHeadless",
     "test-yah": "ng test yah --watch=false --browsers=ChromeHeadless",
-    "build-all": "ng b yah-light && ng b yah-weather && ng b yah-cleaning",
+    "build-all": "ng b yah-light && ng b yah-weather && ng b yah-cleaning && ng b yah-solar",
     "build-electron": "npm run build-all && npm run build && tsc projects/electron-wrapper.ts --outDir ./dist",
-    "start-electron": "npm run build-electron && electron ./dist/main.js ",
+    "start-electron": "electron ./dist/electron-wrapper.js ",
     "start-sw": "http-server -p 8080 -c-1 dist/yah",
     "build-executables": "npm run build-electron && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=x64 --asar --out=./bin/"
   },

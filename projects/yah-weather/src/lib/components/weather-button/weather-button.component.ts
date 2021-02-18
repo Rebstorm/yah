@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs';
 export class WeatherButtonComponent implements OnInit, OnDestroy {
   spinnerName = 'weather-spinner';
   currentDegrees = -1;
-  currentIcon = '';
+  currentIcon = null;
   nextHourIcon = '';
   next12HoursIcon = '';
   lastTimeRefreshed = '';

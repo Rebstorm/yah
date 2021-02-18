@@ -1,0 +1,46 @@
+<div class="box">
+  <div class="header"><img src="./assets/solar-panel.svg" />Solar</div>
+
+  <ngx-spinner
+    name="solar-connection-spinner"
+    bdColor="rgba(0,0,0,0)"
+    size="medium"
+    color="#fff"
+    type="ball-atom"
+    [fullScreen]="false"
+    ><p style="color: white">
+      SolarEdge wird aktualisiert...
+    </p></ngx-spinner
+  >
+
+  <div class="power-layout" *ngIf="finishedLoading">
+    <div class="power-item">
+      <img class="img" src="./assets/solar-panel-inner.svg"/>
+      <div class="text" [ngClass]="pvLoad > 0 ? 'saving' : 'draining'">
+        {{ pvLoad }} {{ loadUnit }}
+      </div>
+    </div>
+    <div class="power-item">
+      <img class="img" src="./assets/home.svg" />
+      <div class="text" [ngClass]="pvLoad > gridLoad ? 'saving' : 'draining'">
+        {{ load }} {{ loadUnit }}
+      </div>
+    </div>
+    <div class="power-item">
+      <img class="img" src="./assets/power-line.svg"/>
+      <div class="text" [ngClass]="gridLoad > 0 ? 'draining' : 'saving'">
+        {{ gridLoad }} {{ loadUnit }}
+      </div>
+    </div>
+  </div>
+  <div class="footer" *ngIf="finishedLoading">{{lastUpdated}}</div>
+
+</div>
+
+<!-- <div>Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+<div>Icons made by <a href="https://creativemarket.com/Becris" title="Becris">Becris</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+<div>Icons made by <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart">smalllikeart</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+-->
