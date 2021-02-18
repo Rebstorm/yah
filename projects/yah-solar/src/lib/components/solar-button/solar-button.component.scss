@@ -30,11 +30,39 @@
   }
 
   .power-layout {
+    padding-top: 2rem;
     display: grid;
     grid-auto-columns: 1fr 1fr 1fr;
     grid-auto-flow: column;
     justify-items: center;
+
+    .power-item {
+      text-align: center;
+    }
+
+    .text {
+      font-size: 1.5rem;
+    }
+
+    .draining {
+      color: #ea1313;
+    }
+
+    .saving {
+      color: #44db33;
+    }
+
+    .img {
+      height: 4rem;
+    }
   }
 
+  .footer {
+    font-size: .8rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 0.3rem 0.4rem 0;
+  }
 }
 

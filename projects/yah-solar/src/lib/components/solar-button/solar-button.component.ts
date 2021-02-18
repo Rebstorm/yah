@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SolarService } from '../../services/solar.service';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { SolarEdgePowerFlow } from 'yah-solar';
+import {SolarEdgePowerFlow} from '../../types/solar.edge.power.flow';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {Timestamp} from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'yah-solar-button',
@@ -10,15 +12,20 @@ import { SolarEdgePowerFlow } from 'yah-solar';
   styleUrls: ['./solar-button.component.scss'],
 })
 export class SolarButtonComponent implements OnInit {
-  pvLoad = '';
-  gridLoad = '';
-  load = '';
+  pvLoad: number;
+  gridLoad: number;
+  load: number;
+  loadUnit = '';
+  finishedLoading = false;
+  lastUpdated: string;
 
   constructor(
     private solarService: SolarService,
     private router: Router,
-    private hotToast: HotToastService
+    private hotToast: HotToastService,
+    private ngxSpinner: NgxSpinnerService
   ) {
+    this.ngxSpinner.show('solar-connection-spinner');
     this.solarService.currentPower$.subscribe(
       (res) => this.paintNumbers(res),
       (error) => {
@@ -38,16 +45,20 @@ export class SolarButtonComponent implements OnInit {
         } else if (error.status === 429){
           this.paintTooManyRequests();
         }
-      }
+      },
     );
   }
 
   ngOnInit(): void {}
 
   private paintNumbers(edgePowerFlow: SolarEdgePowerFlow): void {
-    this.pvLoad = edgePowerFlow.siteCurrentPowerFlow.PV.currentPower.toString();
-    this.gridLoad = edgePowerFlow.siteCurrentPowerFlow.GRID.currentPower.toString();
-    this.load = edgePowerFlow.siteCurrentPowerFlow.LOAD.currentPower.toString();
+    this.pvLoad = edgePowerFlow.siteCurrentPowerFlow.PV.currentPower;
+    this.gridLoad = edgePowerFlow.siteCurrentPowerFlow.GRID.currentPower;
+    this.load = edgePowerFlow.siteCurrentPowerFlow.LOAD.currentPower;
+    this.loadUnit = edgePowerFlow.siteCurrentPowerFlow.unit;
+    this.lastUpdated = `Aktualisiert: ${new Date().toLocaleTimeString()}`;
+    this.ngxSpinner.hide('solar-connection-spinner');
+    this.finishedLoading = true;
   }
 
   private paintTooManyRequests(): void {

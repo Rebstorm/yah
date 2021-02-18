@@ -2,7 +2,12 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/yah-light",
   "lib": {
-    "entryFile": "src/public-api.ts"
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "@ngx-pwa/local-storage": "@ngx-pwa/local-storage",
+      "@ngneat/hot-toast": "@ngneat/hot-toast",
+      "ngx-spinner": "ngx-spinner"
+    }
   },
   "assets": ["src/assets"]
 }
