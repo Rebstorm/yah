@@ -15,7 +15,7 @@
     "test-yah-weather": "ng test yah-weather --watch=false --browsers=ChromeHeadless",
     "test-yah-solar": "ng test yah-solar --watch=false --browsers=ChromeHeadless",
     "test-yah": "ng test yah --watch=false --browsers=ChromeHeadless",
-    "build-all": "ng b yah-light && ng b yah-weather && ng b yah-cleaning && ng b yah-solar",
+    "build-all": "ng b yah-ui && ng b yah-light && ng b yah-weather && ng b yah-cleaning && ng b yah-solar",
     "build-electron": "npm run build-all && npm run build && tsc projects/electron-wrapper.ts --outDir ./dist",
     "start-electron": "electron ./dist/electron-wrapper.js ",
     "start-sw": "http-server -p 8080 -c-1 dist/yah",

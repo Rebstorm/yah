@@ -32,6 +32,10 @@
         "dist/yah-solar/yah-solar",
         "dist/yah-solar"
       ],
+      "yah-ui": [
+        "dist/yah-ui/yah-ui",
+        "dist/yah-ui"
+      ],
       "yah-cleaning": [
         "dist/yah-cleaning/yah-cleaning",
         "dist/yah-cleaning"
