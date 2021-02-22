@@ -1,18 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { map, take, tap } from 'rxjs/operators';
-import { WeatherService } from '../../services/weather.service';
-import { TimeSeries } from '../../types/yr-no-weather-forecast';
-import {
-  animate,
-  query,
-  stagger,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import { Subscription } from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {map, tap} from 'rxjs/operators';
+import {WeatherService} from '../../services/weather.service';
+import {TimeSeries} from '../../types/yr-no-weather-forecast';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'yah-weather-button',

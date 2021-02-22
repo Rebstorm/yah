@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { YahUiComponent } from './yah-ui.component';
+import { ScreenSaverComponent } from './screen-saver.component';
 
-describe('YahUiComponent', () => {
-  let component: YahUiComponent;
-  let fixture: ComponentFixture<YahUiComponent>;
+describe('ScreenSaverComponent', () => {
+  let component: ScreenSaverComponent;
+  let fixture: ComponentFixture<ScreenSaverComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ YahUiComponent ]
+      declarations: [ ScreenSaverComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(YahUiComponent);
+    fixture = TestBed.createComponent(ScreenSaverComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

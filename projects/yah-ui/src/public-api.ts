@@ -2,6 +2,6 @@
  * Public API Surface of yah-ui
  */
 
-export * from './lib/yah-ui.service';
-export * from './lib/yah-ui.component';
-export * from './lib/yah-ui.module';
+export * from './lib/ui.module';
+
+export * from './lib/components/screen-saver/screen-saver.component';
