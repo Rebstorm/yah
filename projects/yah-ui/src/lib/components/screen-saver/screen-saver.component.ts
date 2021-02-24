@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'yah-screen-saver',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScreenSaverComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  public returnToMainScren(): void {
+    this.router.navigate(['']).then();
+  }
 }

@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import {app, BrowserWindow, powerSaveBlocker} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { environment } from './yah/src/environments/environment';
@@ -20,6 +20,9 @@ function createWindow(): void {
       slashes: true,
     })
   );
+
+  powerSaveBlocker.start('prevent-display-sleep');
+
 
   // Open the DevTools.
   if (environment && !environment.production) {
