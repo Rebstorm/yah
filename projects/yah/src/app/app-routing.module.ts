@@ -21,6 +21,10 @@ const routes: Routes = [
     path: 'screen',
     loadChildren: () => import('yah-ui').then((m) => m.UiModule),
   },
+  {
+    path: '**',
+    redirectTo: 'main',
+  },
 ];
 
 @NgModule({
