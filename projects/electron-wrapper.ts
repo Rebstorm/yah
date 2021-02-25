@@ -15,9 +15,7 @@ function createWindow(): void {
   const mainWindow = new BrowserWindow({
     webPreferences: {
       webSecurity: false,
-      nativeWindowOpen: true,
     },
-
     fullscreen: true,
   });
 
