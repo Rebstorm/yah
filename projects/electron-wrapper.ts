@@ -1,8 +1,15 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, powerSaveBlocker } from 'electron';
 import * as path from 'path';
-import * as url from 'url';
 import { environment } from './yah/src/environments/environment';
+import * as url from 'url';
 
+function getUrl(): string {
+  return url.format({
+    pathname: path.join(__dirname, 'yah/index.html'),
+    protocol: 'file:',
+    slashes: true,
+  });
+}
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -12,13 +19,22 @@ function createWindow(): void {
     fullscreen: true,
   });
 
+  powerSaveBlocker.start('prevent-display-sleep');
+
+  // https://github.com/electron/electron/issues/14978
+  mainWindow.webContents.on('did-fail-load', () => {
+    console.log('did-fail-load');
+    mainWindow.loadURL(getUrl());
+    // REDIRECT TO FIRST WEBPAGE AGAIN
+  });
+
   // and load the index.html of the app.
-  mainWindow.loadURL(
-    url.format({
-      pathname: path.join(__dirname, 'yah/index.html'),
-      protocol: 'file:',
-      slashes: true,
-    })
+  mainWindow.loadURL(getUrl()).then(
+    (success) => {
+      // for some reason it thinks it has loaded the content, but it needs to reload it again, to actually show something, wtf?
+      mainWindow.webContents.reload();
+    },
+    (reason) => console.log('fail', reason)
   );
 
   // Open the DevTools.
@@ -31,6 +47,7 @@ function createWindow(): void {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
+  console.log('create window...');
   createWindow();
 
   app.on('activate', () => {

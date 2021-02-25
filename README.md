@@ -18,3 +18,12 @@
 ### Things to do
 - [ ] Package as Ionic App (Android)
 - [ ] Automate the electron packaging process in a workflow 
+
+
+### Future Improvements
+
+- [ ] Make the Screensaver timeout adjustable (currently hardcoded to 5 min)
+- [ ] Make the user chose the background, currently hardcoded
+- [ ] Play around with the size of the widgets, i.e the solar panel widget can be bigger, the hue can be smaller
+
+

@@ -39,7 +39,8 @@ import { SolarService } from 'yah-solar';
   ],
 })
 export class StartScreenComponent implements OnInit {
-  availableApps: string[];
+  availableApps = ['weather'];
+
 
   constructor(
     private router: Router,
@@ -65,7 +66,7 @@ export class StartScreenComponent implements OnInit {
         : this.availableApps.filter((value) => value === 'solar');
     });
 
-    this.availableApps = Array.of('weather');
+
   }
 
   ngOnInit(): void {}

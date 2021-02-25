@@ -1,6 +1,6 @@
 {
   "name": "yah",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "electron-wrapper.js",
   "scripts": {
     "ng": "ng",
@@ -14,13 +14,18 @@
     "test-yah-cleaning": "ng test yah-cleaning --watch=false --browsers=ChromeHeadless",
     "test-yah-weather": "ng test yah-weather --watch=false --browsers=ChromeHeadless",
     "test-yah-solar": "ng test yah-solar --watch=false --browsers=ChromeHeadless",
+    "test-yah-ui": "ng test yah-ui --watch=false --browsers=ChromeHeadless",
     "test-yah": "ng test yah --watch=false --browsers=ChromeHeadless",
-    "build-all": "ng b yah-light && ng b yah-weather && ng b yah-cleaning && ng b yah-solar",
-    "build-electron": "npm run build-all && npm run build && tsc projects/electron-wrapper.ts --outDir ./dist",
+    "build-all": "ng b yah-ui && ng b yah-light && ng b yah-weather && ng b yah-cleaning && ng b yah-solar && ng b yah",
+    "build-all-prd": "ng b yah-ui && ng b yah-light && ng b yah-weather && ng b yah-cleaning && ng b yah-solar && ng b yah --prod",
+    "build-electron": "npm run build-all && tsc projects/electron-wrapper.ts --outDir ./dist",
+    "build-electron-prd": "npm run build-all-prd && tsc projects/electron-wrapper.ts --outDir ./dist",
     "start-electron": "electron ./dist/electron-wrapper.js ",
     "start-sw": "http-server -p 8080 -c-1 dist/yah",
     "build-executables-x64": "npm run build-electron && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=x64 --asar --out=./bin/",
-    "build-executables-arm": "npm run build-electron && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=arm64 --asar --out=./bin/"
+    "build-executables-x64-prd": "npm run build-electron-prd && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=x64 --asar --out=./bin/",
+    "build-executables-arm": "npm run build-electron && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=arm64 --asar --out=./bin/",
+    "build-executables-arm-prd": "npm run build-electron-prd && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=arm64 --asar --out=./bin/"
   },
   "private": true,
   "dependencies": {
