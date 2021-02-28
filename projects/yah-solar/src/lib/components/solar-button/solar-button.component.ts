@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SolarService } from '../../services/solar.service';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import {SolarEdgePowerFlow} from '../../types/solar.edge.power.flow';
-import {NgxSpinnerService} from 'ngx-spinner';
-import {Timestamp} from 'rxjs/internal-compatibility';
+import { SolarEdgePowerFlow } from '../../types/solar.edge.power.flow';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Timestamp } from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'yah-solar-button',
@@ -18,6 +18,9 @@ export class SolarButtonComponent implements OnInit {
   loadUnit = '';
   finishedLoading = false;
   lastUpdated: string;
+
+  solarPumpingIn: string;
+  gridPumpinInOrOut: string;
 
   constructor(
     private solarService: SolarService,
@@ -42,10 +45,10 @@ export class SolarButtonComponent implements OnInit {
           );
 
           router.navigate(['setup']).then();
-        } else if (error.status === 429){
+        } else if (error.status === 429) {
           this.paintTooManyRequests();
         }
-      },
+      }
     );
   }
 
@@ -57,6 +60,14 @@ export class SolarButtonComponent implements OnInit {
     this.load = edgePowerFlow.siteCurrentPowerFlow.LOAD.currentPower;
     this.loadUnit = edgePowerFlow.siteCurrentPowerFlow.unit;
     this.lastUpdated = `Aktualisiert: ${new Date().toLocaleTimeString()}`;
+    this.solarPumpingIn =
+      edgePowerFlow.siteCurrentPowerFlow.PV.currentPower > 0 ? '>' : '';
+    this.gridPumpinInOrOut =
+      edgePowerFlow.siteCurrentPowerFlow.PV.currentPower >
+      edgePowerFlow.siteCurrentPowerFlow.LOAD.currentPower
+        ? '>'
+        : '<';
+
     this.ngxSpinner.hide('solar-connection-spinner');
     this.finishedLoading = true;
   }

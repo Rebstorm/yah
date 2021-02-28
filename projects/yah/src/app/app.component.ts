@@ -19,7 +19,7 @@ export class AppComponent {
     clearTimeout(this.timer);
 
     this.timer = setTimeout(() => {
-      this.router.navigate(['screen']).then();
+      this.router.navigate(['blank']).then();
     }, 300000); // TODO; dont hardcode 5 min, make it settable but user.
   }
 }

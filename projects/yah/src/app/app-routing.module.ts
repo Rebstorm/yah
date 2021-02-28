@@ -18,7 +18,7 @@ const routes: Routes = [
       import('./modules/setup/setup.module').then((m) => m.SetupModule),
   },
   {
-    path: 'screen',
+    path: 'blank',
     loadChildren: () => import('yah-ui').then((m) => m.UiModule),
   },
   {

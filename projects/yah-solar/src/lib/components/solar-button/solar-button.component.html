@@ -16,16 +16,18 @@
   <div class="power-layout" *ngIf="finishedLoading">
     <div class="power-item">
       <img class="img" src="./assets/solar-panel-inner.svg"/>
-      <div class="text" [ngClass]="pvLoad > 0 ? 'saving' : 'draining'">
+      <div class="text" [ngClass]="pvLoad > 0 ? 'saving' : ''">
         {{ pvLoad }} {{ loadUnit }}
       </div>
     </div>
+    <div class="power-flow"> {{solarPumpingIn}} </div>
     <div class="power-item">
       <img class="img" src="./assets/home.svg" />
       <div class="text" [ngClass]="pvLoad > gridLoad ? 'saving' : 'draining'">
         {{ load }} {{ loadUnit }}
       </div>
     </div>
+    <div class="power-flow"> {{gridPumpinInOrOut}} </div>
     <div class="power-item">
       <img class="img" src="./assets/power-line.svg"/>
       <div class="text" [ngClass]="gridLoad > 0 ? 'draining' : 'saving'">
