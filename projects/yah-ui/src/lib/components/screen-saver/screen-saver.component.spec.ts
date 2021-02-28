@@ -29,7 +29,7 @@ describe('ScreenSaverComponent', () => {
   describe('Screensaver Functionality', () => {
 
     it('it should, upon clicking the screen saver return to the main screen', () => {
-      const returnToMainScrenMethod = spyOn(component, 'returnToMainScren');
+      const returnToMainScrenMethod = spyOn(component, 'returnToMainScreen');
       const divScreenSaver = fixture.debugElement.query(By.css('div'));
 
       divScreenSaver.triggerEventHandler('click', {});
