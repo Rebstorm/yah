@@ -1,5 +1,6 @@
 canvas {
-  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+  animation: fadeEffect 1s;
+  transition: ease-in all;
 }
 
 @keyframes fadeEffect {
