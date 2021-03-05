@@ -1,0 +1,9 @@
+canvas {
+  animation: fadeEffect 1s;
+  transition: ease-in all;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

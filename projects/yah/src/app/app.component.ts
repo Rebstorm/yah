@@ -20,6 +20,6 @@ export class AppComponent {
 
     this.timer = setTimeout(() => {
       this.router.navigate(['blank']).then();
-    }, 300000); // TODO; dont hardcode 5 min, make it settable but user.
+    }, 60000); // TODO; dont hardcode 1 min, make it settable but user.
   }
 }
