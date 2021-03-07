@@ -29,6 +29,7 @@ describe('WeatherButtonComponent', () => {
   describe('Information', () => {
     it('should, contain weather information - if the sub is finished', () => {
       const expectedNumber = -99999;
+      component.loaded = true;
       component.currentDegrees = expectedNumber;
 
       fixture.detectChanges();
