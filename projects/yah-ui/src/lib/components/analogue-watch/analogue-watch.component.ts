@@ -34,7 +34,7 @@ export class AnalogueWatchComponent implements OnInit, OnDestroy {
 
   private drawClock(ctx: CanvasRenderingContext2D, radius: number): void {
     ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'transparent';
     ctx.fill();
     this.drawFace(ctx, radius);
     this.drawNumbers(ctx, radius);
@@ -46,7 +46,7 @@ export class AnalogueWatchComponent implements OnInit, OnDestroy {
 
     ctx.beginPath();
     ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-    ctx.fillStyle = '#787676';
+    ctx.fillStyle = 'transparent';
     ctx.fill();
 
     grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);

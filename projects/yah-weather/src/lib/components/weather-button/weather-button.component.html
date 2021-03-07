@@ -11,7 +11,7 @@
 
   <div class="header"><img src="./assets/clearsky_day.png" /> Wetter</div>
 
-  <div class="forecast next-hour">
+  <div class="forecast next-hour" *ngIf="loaded">
     <div>Jetzt</div>
     <div>
       <img src="./assets/{{ currentIcon ? currentIcon : 'cloudy' }}.png" />
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <div class="forecast upcoming-weather">
+  <div class="forecast upcoming-weather" *ngIf="loaded">
     <div class="share-row">
       <div class="ternary-content">
         <div>Nächste Stunde</div>

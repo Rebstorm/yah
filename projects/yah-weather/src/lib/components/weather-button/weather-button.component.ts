@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NgxSpinnerService} from 'ngx-spinner';
-import {map, tap} from 'rxjs/operators';
-import {WeatherService} from '../../services/weather.service';
-import {TimeSeries} from '../../types/yr-no-weather-forecast';
-import {Subscription} from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { map, tap } from 'rxjs/operators';
+import { WeatherService } from '../../services/weather.service';
+import { TimeSeries } from '../../types/yr-no-weather-forecast';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'yah-weather-button',
@@ -12,12 +12,13 @@ import {Subscription} from 'rxjs';
 })
 export class WeatherButtonComponent implements OnInit, OnDestroy {
   spinnerName = 'weather-spinner';
-  currentDegrees = -1;
+  currentDegrees;
   currentIcon = null;
   nextHourIcon = '';
   next12HoursIcon = '';
   lastTimeRefreshed = '';
   private weatherSubscription: Subscription;
+  loaded = false;
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -28,7 +29,10 @@ export class WeatherButtonComponent implements OnInit, OnDestroy {
     this.weatherSubscription = this.weatherService
       .getCurrentWeatherInformation()
       .pipe(
-        tap(() => this.spinner.show(this.spinnerName)),
+        tap(() => {
+          this.spinner.show(this.spinnerName);
+          this.loaded = false;
+        }),
         map((res) => res.properties.timeseries[0]),
         tap(() => this.spinner.hide(this.spinnerName))
       )
@@ -36,6 +40,7 @@ export class WeatherButtonComponent implements OnInit, OnDestroy {
   }
 
   private setWeatherInformation(timeSeries: TimeSeries): void {
+    this.loaded = true;
     this.currentDegrees = timeSeries.data.instant.details.air_temperature;
     this.currentIcon = timeSeries.data.next_1_hours.summary.symbol_code;
 
