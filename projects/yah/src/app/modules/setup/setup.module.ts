@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import { SetupComponent } from './components/setup/setup.component';
 import {LightModule} from 'yah-light';
-import {CleaningModule} from '../../../../../yah-cleaning/src/lib/cleaning.module';
 import {SolarModule} from 'yah-solar';
+import {CleaningModule} from 'yah-cleaning';
+import {WeatherModule} from 'yah-weather';
 
 
 export const routes: Routes = [
@@ -21,6 +22,7 @@ export const routes: Routes = [
     LightModule,
     CleaningModule,
     SolarModule,
+    WeatherModule,
     RouterModule.forChild(routes)
   ]
 })

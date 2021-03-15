@@ -8,35 +8,22 @@ import { YrNoWeatherForecast } from '../types/yr-no-weather-forecast';
   providedIn: 'root',
 })
 export class WeatherService {
-  private geoLocation: Observable<GeolocationPosition>;
 
   constructor(private http: HttpClient) {
-    this.geoLocation = new Observable<GeolocationPosition>((subscriber) => {
-      if (navigator && navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((geolocation) => {
-          subscriber.next(geolocation);
-          subscriber.complete();
-        });
-      } else {
-        subscriber.error('Unsupported browser');
-      }
-    });
   }
 
-  getCurrentWeatherInformation(): Observable<YrNoWeatherForecast> {
-    return this.geoLocation.pipe(
-      take(1),
-      switchMap((geoLocation) => {
-        return this.http.get<YrNoWeatherForecast>(
-          `https://api.met.no/weatherapi/locationforecast/2.0/compact?altitude=0&lat=${geoLocation.coords.latitude.toString()}&lon=${geoLocation.coords.longitude.toString()}`
-        );
-      }),
-      timestamp(),
-      switchMap(({ timestamp: ts, value: value }) =>
-        concat(of(value), EMPTY.pipe(delay(this.timeToNextHourInMs(ts))))
-      ),
-      repeat()
-    );
+  public getCurrentWeatherInformation(): Observable<YrNoWeatherForecast> {
+    return this.http
+      .get<YrNoWeatherForecast>(
+        'https://api.met.no/weatherapi/locationforecast/2.0/compact?altitude=69&lat=50.8106855&lon=7.1414209'
+      )
+      .pipe(
+        timestamp(),
+        switchMap(({ timestamp: ts, value: value }) =>
+          concat(of(value), EMPTY.pipe(delay(this.timeToNextHourInMs(ts))))
+        ),
+        repeat()
+      );
   }
 
   private timeToNextHourInMs(currentTimestampMs: number): number {
