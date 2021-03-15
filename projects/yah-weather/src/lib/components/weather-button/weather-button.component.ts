@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { map, tap } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { WeatherService } from '../../services/weather.service';
 import { TimeSeries } from '../../types/yr-no-weather-forecast';
 import { Subscription } from 'rxjs';
@@ -29,6 +29,7 @@ export class WeatherButtonComponent implements OnInit, OnDestroy {
     this.weatherSubscription = this.weatherService
       .getCurrentWeatherInformation()
       .pipe(
+        filter((res) => Boolean(res)),
         tap(() => {
           this.spinner.show(this.spinnerName);
           this.loaded = false;
