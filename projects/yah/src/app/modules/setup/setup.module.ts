@@ -1,29 +1,51 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { SetupComponent } from './components/setup/setup.component';
-import {LightModule} from 'yah-light';
-import {SolarModule} from 'yah-solar';
-import {CleaningModule} from 'yah-cleaning';
-import {WeatherModule} from 'yah-weather';
-
+import { LightModule } from 'yah-light';
+import { SolarModule } from 'yah-solar';
+import { CleaningModule } from 'yah-cleaning';
+import {WeatherModule, WeatherSetupComponent} from 'yah-weather';
+import { SetupmenuComponent } from './components/setupmenu/setupmenu.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: SetupComponent
+    path: 'setup',
+    component: SetupComponent,
+    children: [
+      {
+        path: '',
+        component: SetupmenuComponent,
+        outlet: 'options'
+      },
+      {
+        path: 'weather',
+        outlet: 'options',
+        component: WeatherSetupComponent,
+      }
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: 'setup'
   }
-]
+
+
+];
 
 @NgModule({
-  declarations: [SetupComponent],
+  declarations: [SetupComponent, SetupmenuComponent],
   imports: [
+    RouterModule.forChild(routes),
     CommonModule,
     LightModule,
     CleaningModule,
     SolarModule,
     WeatherModule,
-    RouterModule.forChild(routes)
-  ]
+  ],
 })
-export class SetupModule { }
+export class SetupModule {
+  constructor() {
+  }
+
+}

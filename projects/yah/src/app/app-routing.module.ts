@@ -13,7 +13,7 @@ const routes: Routes = [
       import('./modules/main/main.module').then((m) => m.MainModule),
   },
   {
-    path: 'setup',
+    path: '',
     loadChildren: () =>
       import('./modules/setup/setup.module').then((m) => m.SetupModule),
   },
@@ -28,7 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true } )],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
