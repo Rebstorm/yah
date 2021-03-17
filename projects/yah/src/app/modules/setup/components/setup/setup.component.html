@@ -7,19 +7,9 @@
   </div>
 
   <div class="box">
-    <yah-weather-setup></yah-weather-setup>
 
-    <hr>
-
-    <yah-light-setup></yah-light-setup>
-
-    <hr>
-
-    <yah-cleaning-setup></yah-cleaning-setup>
-
-    <hr>
-
-    <yah-solar-setup></yah-solar-setup>
+    <div (click)="routeToWeatherOption()"> weather </div>
+    <router-outlet name="options"></router-outlet>
   </div>
 </div>
 
