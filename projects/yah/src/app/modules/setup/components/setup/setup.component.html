@@ -7,8 +7,24 @@
   </div>
 
   <div class="box">
+    <div class="tab-row">
 
-    <div (click)="routeToWeatherOption()"> weather </div>
+      <div class="tab">
+        Einstellungen
+      </div>
+      <div  [routerLink]="['/setup', { outlets: { options: ['weather'] } }]" class="tab" routerLinkActive="active-link">
+        <img src="assets/clearsky_day.png" width="64" /> <p>Wetter</p>
+      </div>
+      <div  [routerLink]="['/setup', { outlets: { options: ['solar'] } }]" class="tab" routerLinkActive="active-link">
+        <img src="assets/solar-panel.svg" width="64" /> <p>Solar</p>
+      </div>
+      <div  [routerLink]="['/setup', { outlets: { options: ['light'] } }]" class="tab" routerLinkActive="active-link">
+        <img src="assets/lamp.svg" width="64" /> <p>Licht</p>
+      </div>
+      <div  [routerLink]="['/setup', { outlets: { options: ['cleaning'] } }]" class="tab" routerLinkActive="active-link">
+        <img src="assets/cleaner.svg" width="64" /> <p>iRobot</p>
+      </div>
+    </div>
     <router-outlet name="options"></router-outlet>
   </div>
 </div>

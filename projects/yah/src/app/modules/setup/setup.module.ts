@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SetupComponent } from './components/setup/setup.component';
-import { LightModule } from 'yah-light';
-import { SolarModule } from 'yah-solar';
-import { CleaningModule } from 'yah-cleaning';
+import {LightModule, LightSetupComponent} from 'yah-light';
+import {SolarModule, SolarSetupComponent} from 'yah-solar';
+import {CleaningModule, CleaningSetupComponent} from 'yah-cleaning';
 import {WeatherModule, WeatherSetupComponent} from 'yah-weather';
 import { SetupmenuComponent } from './components/setupmenu/setupmenu.component';
 
@@ -22,14 +22,24 @@ export const routes: Routes = [
         path: 'weather',
         outlet: 'options',
         component: WeatherSetupComponent,
-      }
+      },
+      {
+        path: 'solar',
+        outlet: 'options',
+        component: SolarSetupComponent,
+      },
+      {
+        path: 'light',
+        outlet: 'options',
+        component: LightSetupComponent,
+      },
+      {
+        path: 'cleaning',
+        outlet: 'options',
+        component: CleaningSetupComponent,
+      },
     ],
   },
-  {
-    path: '**',
-    redirectTo: 'setup'
-  }
-
 
 ];
 
@@ -45,7 +55,6 @@ export const routes: Routes = [
   ],
 })
 export class SetupModule {
-  constructor() {
-  }
+  constructor() {}
 
 }

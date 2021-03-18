@@ -13,6 +13,7 @@ const routes: Routes = [
       import('./modules/main/main.module').then((m) => m.MainModule),
   },
   {
+    // Because of https://stackoverflow.com/questions/39763216/routerlink-with-auxiliary-routes
     path: '',
     loadChildren: () =>
       import('./modules/setup/setup.module').then((m) => m.SetupModule),
@@ -28,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true } )],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
