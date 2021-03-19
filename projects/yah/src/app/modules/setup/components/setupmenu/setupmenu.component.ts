@@ -9,7 +9,10 @@ export class SetupmenuComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
+  public changeBg() {
+
+  }
 }
