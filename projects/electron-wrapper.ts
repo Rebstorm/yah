@@ -35,6 +35,9 @@ function createWindow(): void {
     },
     (reason) => console.log('fail', reason)
   );
+
+  mainWindow.webContents.openDevTools();
+
 }
 
 // This method will be called when Electron has finished
