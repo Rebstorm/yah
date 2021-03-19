@@ -1,6 +1,5 @@
-import { app, BrowserWindow, powerSaveBlocker } from 'electron';
+import {app, BrowserWindow, powerSaveBlocker} from 'electron';
 import * as path from 'path';
-import { environment } from './yah/src/environments/environment';
 import * as url from 'url';
 
 function getUrl(): string {
@@ -36,11 +35,6 @@ function createWindow(): void {
     },
     (reason) => console.log('fail', reason)
   );
-
-  // Open the DevTools.
-  if (environment && !environment.production) {
-    mainWindow.webContents.openDevTools();
-  }
 }
 
 // This method will be called when Electron has finished
