@@ -1,9 +1,11 @@
 ![Jasmine Tests (Integration/Unit)](https://github.com/Rebstorm/yah/workflows/Jasmine%20Tests%20(Integration/Unit)/badge.svg)
 
-![Alt Text](yah-3.3.gif)
+![Alt Text](yah-4-4.gif)
 # Yah - _Yet Another Homescreen_
  _Yet Another Homescreen_, is a home automation system that simplifies your life by letting you control your smart home appliances right from one screen. 
- launch it on your home tablet / informational screen and you have a functional home smart hub centre.
+ launch it on your home tablet / informational screen and you have a functional home smart hub centre. 
+ 
+ The UI builds on the [glassmorphic principle](https://uxdesign.cc/glassmorphism-in-user-interfaces-1f39bb1308c9). 
  
  
 ## Currently supported systems

@@ -13,7 +13,8 @@ const routes: Routes = [
       import('./modules/main/main.module').then((m) => m.MainModule),
   },
   {
-    path: 'setup',
+    // Because of https://stackoverflow.com/questions/39763216/routerlink-with-auxiliary-routes
+    path: '',
     loadChildren: () =>
       import('./modules/setup/setup.module').then((m) => m.SetupModule),
   },
