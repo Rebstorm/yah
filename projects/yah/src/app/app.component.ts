@@ -12,6 +12,9 @@ export class AppComponent {
   timer: ReturnType<typeof setTimeout>;
 
   constructor(private router: Router) {
+    this.timer = setTimeout(() => {
+      this.router.navigate(['blank']).then();
+    }, 60000);
   }
 
   @HostListener('document:click')
