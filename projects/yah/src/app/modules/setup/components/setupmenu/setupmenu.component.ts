@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { AppSettingsService } from '../../../../services/app-settings.service';
 
 @Component({
   selector: 'app-setupmenu',
   templateUrl: './setupmenu.component.html',
-  styleUrls: ['./setupmenu.component.scss']
+  styleUrls: ['./setupmenu.component.scss'],
 })
 export class SetupmenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appSettings: AppSettingsService) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {}
+
+  public setBg(bg: string): void {
+    this.appSettings.setBg(bg).subscribe();
   }
-
 }
