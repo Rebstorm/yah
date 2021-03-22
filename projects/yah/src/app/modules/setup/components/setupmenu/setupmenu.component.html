@@ -1,12 +1,27 @@
-<div>
+<div style="width: 100%">
   <p>Hintergrund</p>
 
-  <div>
-    <div (click)="setBg('endless')">Endless</div>
-    <div (click)="setBg('classic')">Classic</div>
-    <div (click)="setBg('starry')">Starry</div>
-    <div (click)="setBg('stingray')">Stingray</div>
-    <div (click)="setBg('wavy')">Wavy</div>
+  <div class="bg-options">
+    <div class="template endless" (click)="setBg('endless')">
+      <div class="">Endless</div>
+    </div>
+    <div class="template classic" (click)="setBg('classic')">
+      <div>Classic</div>
+    </div>
+    <div class="template starry" (click)="setBg('starry')">
+      <div>Starry</div>
+    </div>
+    <div class="template stingray" (click)="setBg('stingray')">
+      <div>Stingray</div>
+    </div>
+    <div class="template wavy" (click)="setBg('wavy')">
+      <div>Wavy</div>
+    </div>
+    <div class="template sunset" (click)="setBg('sunset')">
+      <div>Sunset</div>
+    </div>
+    <div class="template flower" (click)="setBg('flower')">
+      <div>Flower</div>
+    </div>
   </div>
-
 </div>
