@@ -11,7 +11,7 @@ describe('YahCleaningComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([{path: 'setup', component: CleaningButtonComponent}])],
       declarations: [CleaningButtonComponent],
     }).compileComponents();
   });

@@ -12,7 +12,7 @@ describe('CleaningSetupComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CleaningSetupComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([{path: 'setup', component: CleaningSetupComponent}])],
     }).compileComponents();
   });
 

@@ -6,19 +6,30 @@
   justify-content: center;
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 1s cubic-bezier(.17,.67,.84,.61);
+  transition: all 1s cubic-bezier(0.17, 0.67, 0.84, 0.61);
 
   &:active {
     background: #fff;
   }
-
 }
 
+.settings {
+  width: 100%;
 
-.bg-options {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  box-sizing: content-box;
-  flex-wrap: wrap;
+  .breaker {
+    margin: 2rem 0;
+    border-color: #fff;
+  }
+
+  .bg-options {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    box-sizing: content-box;
+    flex-wrap: wrap;
+  }
+
+  yah-counter {
+    margin: 2rem;
+  }
 }

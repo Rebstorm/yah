@@ -1,0 +1,5 @@
+<div class="container">
+  <div class="min" (click)="decrement()" >-</div>
+  <div class="display">{{_value}}<ng-container *ngIf="_unit">{{' ' + _unit}}</ng-container></div>
+  <div class="plus" (click)="increment()">+</div>
+</div>

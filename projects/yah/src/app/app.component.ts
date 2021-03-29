@@ -9,15 +9,18 @@ import { AppSettingsService } from './services/app-settings.service';
 })
 export class AppComponent {
   title = 'yah';
-
   timer: ReturnType<typeof setTimeout>;
 
-  constructor(private router: Router, private appSettings: AppSettingsService) {
-    this.timer = setTimeout(() => {
-      this.router.navigate(['blank']).then();
-    }, 60000);
+  delayScreensaverTimeout;
 
+  constructor(private router: Router, private appSettings: AppSettingsService) {
     this.appSettings.background$.subscribe((bg) => this.changeBg(bg));
+    this.appSettings.screenSaverTimeout$.subscribe((timeout) => {
+      this.delayScreensaverTimeout = timeout;
+      this.timer = setTimeout(() => {
+        this.router.navigate(['blank']).then();
+      }, timeout);
+    });
   }
 
   public changeBg(cssBg: string): void {
@@ -30,6 +33,6 @@ export class AppComponent {
 
     this.timer = setTimeout(() => {
       this.router.navigate(['blank']).then();
-    }, 60000); // TODO; dont hardcode 1 min, make it settable but user.
+    }, this.delayScreensaverTimeout); // TODO; dont hardcode 1 min, make it settable but user.
   }
 }
