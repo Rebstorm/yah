@@ -7,12 +7,15 @@ import { AppSettingsService } from '../../../../services/app-settings.service';
   styleUrls: ['./setupmenu.component.scss'],
 })
 export class SetupmenuComponent implements OnInit {
-
   constructor(private appSettings: AppSettingsService) {}
 
   public ngOnInit(): void {}
 
   public setBg(bg: string): void {
     this.appSettings.setBg(bg).subscribe();
+  }
+
+  public setScreenSaverTimeout(newScreeenTimeout: number): void {
+    this.appSettings.setScreensaverTimeout(newScreeenTimeout).subscribe();
   }
 }

@@ -7,6 +7,7 @@ import {SolarModule, SolarSetupComponent} from 'yah-solar';
 import {CleaningModule, CleaningSetupComponent} from 'yah-cleaning';
 import {WeatherModule, WeatherSetupComponent} from 'yah-weather';
 import { SetupmenuComponent } from './components/setupmenu/setupmenu.component';
+import {UiModule} from 'yah-ui';
 
 export const routes: Routes = [
   {
@@ -45,14 +46,15 @@ export const routes: Routes = [
 
 @NgModule({
   declarations: [SetupComponent, SetupmenuComponent],
-  imports: [
-    RouterModule.forChild(routes),
-    CommonModule,
-    LightModule,
-    CleaningModule,
-    SolarModule,
-    WeatherModule,
-  ],
+    imports: [
+        RouterModule.forChild(routes),
+        CommonModule,
+        LightModule,
+        CleaningModule,
+        SolarModule,
+        WeatherModule,
+        UiModule,
+    ],
 })
 export class SetupModule {
   constructor() {}
