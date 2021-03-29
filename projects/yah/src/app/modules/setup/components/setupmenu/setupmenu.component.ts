@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppSettingsService } from '../../../../services/app-settings.service';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-setupmenu',
@@ -7,9 +8,14 @@ import { AppSettingsService } from '../../../../services/app-settings.service';
   styleUrls: ['./setupmenu.component.scss'],
 })
 export class SetupmenuComponent implements OnInit {
+
+  timeoutValue: number = 0;
+
   constructor(private appSettings: AppSettingsService) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.appSettings.screenSaverTimeout$.pipe(take(1)).subscribe(timeout => this.timeoutValue = (timeout / 60000));
+  }
 
   public setBg(bg: string): void {
     this.appSettings.setBg(bg).subscribe();

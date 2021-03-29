@@ -27,6 +27,6 @@
   <hr class="breaker">
 
   <p>Screensaver timeout</p>
-  <yah-counter [canBeNegative]="false" [unit]="'min'" (value)="setScreenSaverTimeout($event)"></yah-counter>
+  <yah-counter [setValue]="timeoutValue" [canBeNegative]="false" [unit]="'min'" (value)="setScreenSaverTimeout($event)"></yah-counter>
 
 </div>

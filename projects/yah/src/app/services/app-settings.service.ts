@@ -37,14 +37,12 @@ export class AppSettingsService {
   }
 
   public setScreensaverTimeout(newScreeenTimeout: number): Observable<null> {
-    console.log('setting new screen saver', newScreeenTimeout)
     return this.localDb.set(this.SCREENSAVER_KEY, newScreeenTimeout, {
       type: 'number',
     });
   }
 
   private returnDefaultScreensaverTimeout(): number {
-    console.log("returning defaultt");
     return 60000;
   }
 }
