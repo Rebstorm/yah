@@ -9,7 +9,7 @@
   <div class="box">
     <div class="tab-row">
 
-      <div class="tab">
+      <div class="tab option" [routerLink]="['/setup']" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" >
         Einstellungen
       </div>
       <div  [routerLink]="['/setup', { outlets: { options: ['weather'] } }]" class="tab" routerLinkActive="active-link">

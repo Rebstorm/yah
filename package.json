@@ -1,7 +1,7 @@
 {
   "name": "yah",
   "productName": "yah",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "main": "electron-wrapper.js",
   "scripts": {
     "ng": "ng",
@@ -24,9 +24,9 @@
     "start-electron": "electron ./dist/electron-wrapper.js ",
     "start-sw": "http-server -p 8080 -c-1 dist/yah",
     "build-executables-x64": "npm run build-electron && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=x64 --asar --out=./bin/",
-    "build-executables-x64-prd": "npm run build-electron-prd && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=x64 --asar --out=./bin/",
+    "build-executables-x64-prd": "npm run build-electron-prd && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=x64 --asar --out=./bin/ --overwrite",
     "build-executables-arm": "npm run build-electron && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=arm64 --asar --out=./bin/",
-    "build-executables-arm-prd": "npm run build-electron-prd && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=arm64 --asar --out=./bin/"
+    "build-executables-arm-prd": "npm run build-electron-prd && cp package.json ./dist/ && electron-packager ./dist/ yah --platform=linux --arch=arm64 --asar --out=./bin/ --overwrite"
   },
   "private": true,
   "dependencies": {
