@@ -37,7 +37,8 @@ Got solar panels? Monitor them right from the same centre.
 
 
 ### Future Improvements
-
+- [ ] Make the clock move, to not burn into screen.
+- [ ] Make a detailed weather view?
 - [x] Make the Screensaver timeout adjustable (currently hardcoded to 5 min)
 - [x] Make the user chose the background, currently hardcoded
 - [x] Make the weather go by gps cordinations, instead of hardcoding it. 
