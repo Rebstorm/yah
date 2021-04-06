@@ -4,10 +4,10 @@
   "peerDependencies": {
     "@angular/common": "^11.0.6",
     "@angular/core": "^11.0.6",
-    "ngx-spinner": "^10.0.1 || ^11.0.0"
+    "ngx-spinner": "^10.0.1 || ^11.0.1"
   },
   "typings": "./dist/yah-weather/public-api.d.ts",
-  "dependencies" : {
+  "dependencies": {
     "tslib": "2.2.0"
   }
 }
