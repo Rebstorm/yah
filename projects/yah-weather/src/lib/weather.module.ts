@@ -2,13 +2,13 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {WeatherButtonComponent} from './components/weather-button/weather-button.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import {WeatherSetupComponent} from './components/weather-setup/weather-setup.component';
+import { WeatherSetupComponent } from './components/weather-setup/weather-setup.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
-  declarations: [WeaXtherButtonComponent, WeatherSetupComponent],
+  declarations: [WeatherButtonComponent, WeatherSetupComponent],
   imports: [
     CommonModule,
     NoopAnimationsModule,
