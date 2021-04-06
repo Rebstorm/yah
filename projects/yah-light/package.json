@@ -4,7 +4,7 @@
   "peerDependencies": {
     "@angular/common": "11.2.8",
     "@angular/core": "11.2.8",
-    "ngx-spinner": "11.0.0",
+    "ngx-spinner": "11.0.1",
     "@ngx-pwa/local-storage": "11.0.2",
     "@ngneat/overview": "1.0.0",
     "@ngneat/hot-toast": "2.0.1"

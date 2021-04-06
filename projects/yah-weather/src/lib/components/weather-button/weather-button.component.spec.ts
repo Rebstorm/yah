@@ -4,6 +4,7 @@ import { WeatherButtonComponent } from './weather-button.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('WeatherButtonComponent', () => {
   let component: WeatherButtonComponent;
@@ -12,7 +13,7 @@ describe('WeatherButtonComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [WeatherButtonComponent],
-      imports: [HttpClientTestingModule, NgxSpinnerModule],
+      imports: [HttpClientTestingModule, NgxSpinnerModule, NoopAnimationsModule],
     }).compileComponents();
   });
 
