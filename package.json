@@ -45,7 +45,7 @@
     "@ngx-pwa/local-storage": "11.1.0",
     "ngx-spinner": "11.0.1",
     "process": "0.11.10",
-    "rxjs": "6.6.7",
+    "rxjs": "7.0.1",
     "tslib": "2.2.0",
     "zone.js": "0.11.4"
   },
