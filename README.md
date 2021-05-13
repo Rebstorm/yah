@@ -6,7 +6,8 @@
  launch it on your home tablet / informational screen and you have a functional home smart hub centre. 
  
  The UI builds on the [glassmorphic principle](https://uxdesign.cc/glassmorphism-in-user-interfaces-1f39bb1308c9). 
- 
+
+_Latest Improvement_: Runs Angular 12.
  
 ## Currently supported systems
 - [Philips Hue](https://www.philips-hue.com/)
