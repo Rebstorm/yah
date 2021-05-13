@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { SolarEdgePowerFlow } from '../../types/solar.edge.power.flow';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Timestamp } from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'yah-solar-button',
