@@ -41,7 +41,7 @@ import { combineLatest } from 'rxjs';
   ],
 })
 export class StartScreenComponent implements OnInit {
-  availableApps = [];
+  availableApps: string[] = [];
 
   constructor(
     private router: Router,
@@ -86,7 +86,11 @@ export class StartScreenComponent implements OnInit {
     );
   }
 
-  goSettings() {
+  goSettings(): void {
     this.router.navigate(['setup']).then();
+  }
+
+  handleClick($event: MouseEvent, app: string): void {
+    this.router.navigate([app]).then();
   }
 }

@@ -7,7 +7,7 @@
 <div cdkDropList cdkDropListOrientation="horizontal" class="app-list" (cdkDropListDropped)="drop($event)">
   <div class="container" [@fadeIn]="availableApps.length">
     <div *ngFor="let app of availableApps">
-      <div [ngSwitch]="app">
+      <div [ngSwitch]="app" (click)="handleClick($event, app)">
         <yah-weather-button *ngSwitchCase="'weather'" cdkDrag>
           <div class="drag-placeholder" *cdkDragPlaceholder></div>
         </yah-weather-button>

@@ -20,11 +20,11 @@ const routes: Routes = [
   declarations: [StartScreenComponent],
   imports: [
     CommonModule,
-    WeatherModule,
     LightModule,
     DragDropModule,
     RouterModule.forChild(routes),
     CleaningModule,
+    WeatherModule,
     SolarModule,
   ]
 })
