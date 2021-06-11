@@ -7,6 +7,6 @@
     "ngx-spinner": "^11.0.1"
   },
   "dependencies": {
-    "tslib": "2.2.0"
+    "tslib": "2.3.0"
   }
 }
