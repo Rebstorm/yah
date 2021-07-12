@@ -36,7 +36,7 @@ function createWindow(): void {
     (reason) => console.log('fail', reason)
   );
 
-  //mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
 }
 
