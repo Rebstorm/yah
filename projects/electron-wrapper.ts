@@ -10,12 +10,16 @@ function getUrl(): string {
   });
 }
 function createWindow(): void {
+
+  const iconPath = path.join(__dirname, '/assets/favicon.png');
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     webPreferences: {
       webSecurity: false,
     },
     fullscreen: true,
+    icon: iconPath
   });
 
   powerSaveBlocker.start('prevent-display-sleep');
