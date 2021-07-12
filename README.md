@@ -7,7 +7,7 @@
  
  The UI builds on the [glassmorphic principle](https://uxdesign.cc/glassmorphism-in-user-interfaces-1f39bb1308c9). 
 
-_Latest Improvement_: Runs Angular 12.
+_Latest Improvement_: Wonderful bugfixes in the hue platform. 
  
 ## Currently supported systems
 - [Philips Hue](https://www.philips-hue.com/)
