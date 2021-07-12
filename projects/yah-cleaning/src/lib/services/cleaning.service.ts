@@ -78,13 +78,6 @@ export class CleaningService {
       switchMap((serverUrl) => {
         return this.http
           .get<CleaningStatus>(`http://${serverUrl}/api/local/info/mission`)
-          .pipe(
-            timestamp(),
-            switchMap(({ timestamp: ts, value: value }) =>
-              concat(of(value), EMPTY.pipe(delay(60000)))
-            ),
-            repeat()
-          );
       })
     );
   }

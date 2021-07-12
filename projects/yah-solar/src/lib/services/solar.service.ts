@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { combineLatest, concat, EMPTY, NEVER, Observable, of } from 'rxjs';
-import { delay, map, repeat, switchMap, timestamp } from 'rxjs/operators';
+import { combineLatest, concat, EMPTY, interval, NEVER, Observable, of, timer } from 'rxjs';
+import { delay, delayWhen, map, repeat, switchMap, timeInterval, timestamp } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { SolarEdgePowerFlow } from '../types/solar.edge.power.flow';
 import { StorageMap } from '@ngx-pwa/local-storage';
@@ -22,6 +22,8 @@ export class SolarService {
   private SOLAR_IS_ACTIVATED_KEY = 'SOLAR_EDGE_ACTIVATED';
   private SOLAR_SITE_ID_KEY = 'SOLAR_EDGE_SITE_ID';
   private SOLAR_SITE_API_KEY = 'SOLAR_EDGE_API_KEY';
+
+  private delayForFiveSeconds = () => timer(5000);
 
 
 
@@ -63,14 +65,7 @@ export class SolarService {
                   },
                 }
               )
-              .pipe(
-                timestamp(),
-                switchMap(({ timestamp: ts, value: value }) =>
-                  // update every 10 min.
-                  concat(of(value), EMPTY.pipe(delay(600000)))
-                ),
-                repeat()
-              )
+              .pipe()
           : NEVER;
       })
     );

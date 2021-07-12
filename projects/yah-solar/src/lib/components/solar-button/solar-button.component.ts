@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { SolarEdgePowerFlow } from '../../types/solar.edge.power.flow';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'yah-solar-button',
@@ -28,9 +29,10 @@ export class SolarButtonComponent implements OnInit {
     private ngxSpinner: NgxSpinnerService
   ) {
     this.ngxSpinner.show('solar-connection-spinner');
-    this.solarService.currentPower$.subscribe(
-      (res) => this.paintNumbers(res),
-      (error) => {
+
+    this.solarService.currentPower$.subscribe({
+      next: (res) => this.paintNumbers(res) ,
+      error: (error) => {
         if (error.status === 403) {
           this.hotToast.error(
             `SolarEdge Brauche Ihr aufmerksamkeit: ${error.error.String}`,
@@ -48,7 +50,8 @@ export class SolarButtonComponent implements OnInit {
           this.paintTooManyRequests();
         }
       }
-    );
+    
+    })
   }
 
   ngOnInit(): void {}
