@@ -61,7 +61,7 @@ export class LightService {
             dismissible: true,
             ariaLive: 'polite',
           });
-          this.router.navigate(['setup']).then();
+          this.router.navigate(['setup', { outlets: { options: 'light' } }], ).then();
           return;
         }
         return res;
