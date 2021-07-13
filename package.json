@@ -1,19 +1,8 @@
 {
     "name": "yah",
     "productName": "yah",
-    <<
-    <<
-    <<
-    < HEAD "version": "0.8.1",
-    ===
-    ===
-    =
-    "version": "0.7.0",
-    >>>
-    >>>
-    >
-    finally,
-    it compiles "main": "electron-wrapper.js",
+    "version": "0.8.1",
+    "main": "electron-wrapper.js",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -83,14 +72,5 @@
         "tslint": "6.1.3",
         "typescript": "4.3.5",
         "http-server": "0.12.3"
-    } <<
-    <<
-    <<
-    < HEAD
-} ===
-===
-=
-} >>>
->>>
->
-finally, it compiles
+    }
+}
