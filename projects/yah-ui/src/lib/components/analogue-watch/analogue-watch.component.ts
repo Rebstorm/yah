@@ -37,7 +37,7 @@ export class AnalogueWatchComponent implements OnInit, OnDestroy {
     ctx.fillStyle = '#000';
     ctx.fill();
     this.drawFace(ctx, radius);
-    this.drawNumbers(ctx, radius);
+    //this.drawNumbers(ctx, radius);
     this.drawTime(ctx, radius);
   }
 
@@ -55,7 +55,7 @@ export class AnalogueWatchComponent implements OnInit, OnDestroy {
     grad.addColorStop(1, '#dedddd');
     ctx.strokeStyle = grad;
     ctx.lineWidth = radius * 0.1;
-    ctx.stroke();
+    // ctx.stroke(); - Removing border to reduce burn in. For now.
 
     ctx.beginPath();
     ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
