@@ -1,3 +1,11 @@
-<div routerLink="/">
- Working on it. Go back
+<div  class="back-button" routerLink="/">
+ Go Back
+</div>
+
+<div class="forecast-container">
+  <div *ngFor="let forecast of forecasts"  class="item">
+    <div>
+      {{forecast.time}}
+    </div>
+  </div>
 </div>
