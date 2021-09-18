@@ -12,7 +12,7 @@ export interface TimeSeries {
         air_temperature: number,
       }
     },
-    next_1_hours: {
+    next_1_hours?: {
       summary: {
         symbol_code: string;
       }

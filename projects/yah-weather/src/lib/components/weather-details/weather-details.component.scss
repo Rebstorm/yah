@@ -1,5 +1,49 @@
-div {
-  width: 99%;
-  height: 90vh;
-  border: 1px solid white ;
+.back-button {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  justify-self: center;
+  height: 5rem;
+  width: 5rem;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(0.2rem);
+  -webkit-backdrop-filter: blur(0.2rem);
+  border-radius: 0.7rem;
+  margin-left: 1rem;
+  margin-top: 2rem;
+
+  img {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-self: center;
+  }
+}
+
+
+.forecast-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  width: 100%;
+  .item {
+
+    .item-card {
+      margin: 1rem;
+      padding: 1rem;
+      background: hsla(0,0%,100%,.25);
+      border: 1px solid hsla(0,0%,100%,.2);
+      backdrop-filter: blur(.2rem);
+      -webkit-backdrop-filter: blur(.2rem);
+      border-radius: .7rem;
+    }
+  }
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
