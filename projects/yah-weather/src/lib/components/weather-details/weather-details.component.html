@@ -1,11 +1,14 @@
 <div  class="back-button" routerLink="/">
- Go Back
+  <img class="img" src="./assets/back.svg">
 </div>
 
-<div class="forecast-container">
-  <div *ngFor="let forecast of forecasts"  class="item">
-    <div>
-      {{forecast.time}}
+<div class="forecast-container" *ngIf="forecasts$ | async as forecasts"  [@fadeIn]="forecasts.properties.timeseries.length">
+  <div *ngFor="let forecast of forecasts.properties.timeseries"  class="item">
+    <div class="item-card">
+      <div class="day"><h2>{{this.humanReadableTime(forecast.time)}}</h2></div>
+      <img src="./assets/{{ forecast.data.next_1_hours?.summary.symbol_code || 'dont_know' }}.png"  width="200" height="200" />
+      <div class="temp"><h2>{{forecast.data.instant.details.air_temperature}} C</h2></div>
+
     </div>
   </div>
 </div>
