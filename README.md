@@ -1,13 +1,14 @@
 ![Jasmine Tests (Integration/Unit)](https://github.com/Rebstorm/yah/workflows/Jasmine%20Tests%20(Integration/Unit)/badge.svg)
 
-![Alt Text](yah5.gif)
+![YAH](yah5.gif)
 # Yah - _Yet Another Homescreen_
  _Yet Another Homescreen_, is a home automation system that simplifies your life by letting you control your smart home appliances right from one screen. 
  launch it on your home tablet / informational screen and you have a functional home smart hub centre. 
  
  The UI builds on the [glassmorphic principle](https://uxdesign.cc/glassmorphism-in-user-interfaces-1f39bb1308c9). 
 
-_Latest Improvement_: Wonderful bugfixes in the hue platform. 
+_Latest Improvement_: Awesome detailed feature view for weather app.
+![Weather Detail view](yah-detail-weather-view.gif)
  
 ## Currently supported systems
 - [Philips Hue](https://www.philips-hue.com/)
@@ -38,8 +39,10 @@ Got solar panels? Monitor them right from the same centre.
 
 
 ### Future Improvements
+- [ ] Make the weather app be able to get location with the web api
+- [ ] Upload onto a dedicated webpage, as to not needing to download app.
 - [ ] Make the clock move, to not burn into screen.
-- [ ] Make a detailed weather view?
+- [x] Make a detailed weather view
 - [x] Make the Screensaver timeout adjustable (currently hardcoded to 5 min)
 - [x] Make the user chose the background, currently hardcoded
 - [x] Make the weather go by gps cordinations, instead of hardcoding it. 
