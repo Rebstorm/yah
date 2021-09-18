@@ -39,6 +39,7 @@ Got solar panels? Monitor them right from the same centre.
 
 
 ### Future Improvements
+- [ ] Localize
 - [ ] Make the weather app be able to get location with the web api
 - [ ] Upload onto a dedicated webpage, as to not needing to download app.
 - [ ] Make the clock move, to not burn into screen.
