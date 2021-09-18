@@ -35,7 +35,6 @@ describe('WeatherDetailsComponent', () => {
       const exptectedString = 'Fr. 1:00';
 
       const result = component.humanReadableTime(date);
-
       expect(result).toEqual(exptectedString);
 
     });
