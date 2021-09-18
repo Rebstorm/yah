@@ -52,6 +52,6 @@ export class WeatherDetailsComponent implements OnInit {
         ? '0' + boxedDate.getMinutes().toString()
         : boxedDate.getMinutes().toString();
 
-    return `${day} ${boxedDate.getUTCHours()}:${minutes}`;
+    return `${day} ${boxedDate.getHours()}:${minutes}`;
   }
 }
