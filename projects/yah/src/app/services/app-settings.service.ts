@@ -43,6 +43,7 @@ export class AppSettingsService {
   }
 
   private returnDefaultScreensaverTimeout(): number {
+    console.warn('Default is being returned, as it cannot read the localdb');
     return 60000;
   }
 }

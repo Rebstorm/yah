@@ -4,17 +4,18 @@ import { ScreenSaverComponent } from './components/screen-saver/screen-saver.com
 import {RouterModule} from '@angular/router';
 import { AnalogueWatchComponent } from './components/analogue-watch/analogue-watch.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 
 
 @NgModule({
-  declarations: [ScreenSaverComponent, AnalogueWatchComponent, CounterComponent],
+  declarations: [ScreenSaverComponent, AnalogueWatchComponent, CounterComponent, DropdownComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
       { path: '', component: ScreenSaverComponent }
     ])
   ],
-  exports: [ ScreenSaverComponent, CounterComponent ]
+  exports: [ ScreenSaverComponent, CounterComponent, DropdownComponent ]
 })
 export class UiModule { }

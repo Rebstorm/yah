@@ -1,3 +1,4 @@
+<script src="../setup/setup.component.ts"></script>
 <div class="settings">
   <p>Hintergrund</p>
   <div class="bg-options">
@@ -28,5 +29,14 @@
 
   <p>Screensaver timeout</p>
   <yah-counter [setValue]="timeoutValue" [canBeNegative]="false" [unit]="'min'" (value)="setScreenSaverTimeout($event)"></yah-counter>
+
+  <hr class="breaker">
+
+  <p> Sprache </p>
+
+  <yah-dropdown></yah-dropdown>
+
+
+
 
 </div>
