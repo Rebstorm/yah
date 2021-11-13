@@ -7,8 +7,7 @@
  
  The UI builds on the [glassmorphic principle](https://uxdesign.cc/glassmorphism-in-user-interfaces-1f39bb1308c9). 
 
-_Latest Improvement_: Awesome detailed feature view for weather app.
-![Weather Detail view](yah-detail-weather-view.gif)
+_Latest Improvement_: Angular 13.
  
 ## Currently supported systems
 - [Philips Hue](https://www.philips-hue.com/)
