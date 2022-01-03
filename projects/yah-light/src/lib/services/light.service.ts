@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {combineLatest, concat, empty, EMPTY, Observable, of,} from 'rxjs';
 import {HttpClient, HttpResponse,} from '@angular/common/http';
-import {delay, filter, map, repeat, switchMap, take, tap, timeout, timestamp,} from 'rxjs/operators';
+import {delay, filter, map, repeat, switchMap, take, tap, timeout, timestamp} from 'rxjs/operators';
 import {StorageMap} from '@ngx-pwa/local-storage';
 import {Router} from '@angular/router';
 import {HotToastService} from '@ngneat/hot-toast';
@@ -74,7 +74,7 @@ export class LightService {
     );
 
     this.isAuthenticated$ = combineLatest([
-      localDb.get<boolean>(this.HUE_USERNAME_KEY, { type: 'string' }),
+      localDb.get<string>(this.HUE_USERNAME_KEY, { type: 'string' }),
       this.validHueBridgeIp$,
       this.isActivated$,
     ]).pipe(
