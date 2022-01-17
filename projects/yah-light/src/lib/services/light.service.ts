@@ -74,7 +74,7 @@ export class LightService {
     );
 
     this.isAuthenticated$ = combineLatest([
-      localDb.get<boolean>(this.HUE_USERNAME_KEY, { type: 'string' }),
+      localDb.get<string>(this.HUE_USERNAME_KEY, { type: 'string' }),
       this.validHueBridgeIp$,
       this.isActivated$,
     ]).pipe(
