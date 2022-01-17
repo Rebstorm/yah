@@ -56,7 +56,7 @@
     "@types/jasmine": "3.10.3",
     "@types/node": "16.11.20",
     "codelyzer": "6.0.2",
-    "electron": "15.3.3",
+    "electron": "15.3.5",
     "electron-packager": "15.4.0",
     "jasmine-core": "3.10.1",
     "jasmine-spec-reporter": "7.0.0",
