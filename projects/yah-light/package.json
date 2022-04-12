@@ -5,7 +5,7 @@
     "@angular/common": "^13.1.2",
     "@angular/core": "^13.1.2",
     "ngx-spinner": "13.1.1",
-    "@ngx-pwa/local-storage": "13.0.2",
+    "@ngx-pwa/local-storage": "13.0.3",
     "@ngneat/overview": "3.0.4",
     "@ngneat/hot-toast": "4.1.0"
   },
