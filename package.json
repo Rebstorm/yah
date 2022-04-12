@@ -58,7 +58,7 @@
     "codelyzer": "6.0.2",
     "electron": "18.0.3",
     "electron-packager": "15.4.0",
-    "jasmine-core": "4.0.1",
+    "jasmine-core": "4.1.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.3.17",
     "karma-chrome-launcher": "3.1.1",
