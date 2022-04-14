@@ -54,7 +54,7 @@
     "@angular/cli": "13.3.3",
     "@angular/compiler-cli": "13.3.3",
     "@types/jasmine": "4.0.2",
-    "@types/node": "16.11.26",
+    "@types/node": "16.11.27",
     "codelyzer": "6.0.2",
     "electron": "18.0.3",
     "electron-packager": "15.4.0",
