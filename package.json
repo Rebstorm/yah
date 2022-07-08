@@ -42,7 +42,7 @@
     "@angular/service-worker": "13.3.11",
     "@ngneat/hot-toast": "4.1.0",
     "@ngneat/overview": "3.0.4",
-    "@ngx-pwa/local-storage": "13.0.3",
+    "@ngx-pwa/local-storage": "13.0.5",
     "ngx-spinner": "13.1.1",
     "process": "0.11.10",
     "rxjs": "7.5.5",
