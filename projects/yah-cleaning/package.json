@@ -2,8 +2,8 @@
   "name": "yah-cleaning",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^13.1.2",
-    "@angular/core": "^13.1.2",
+    "@angular/common": "^13.1.2 || ^14.0.0",
+    "@angular/core": "^13.1.2 || ^14.0.0",
     "ngx-spinner": "^11.0.1 || ^12.0.0 || ^13.0.0"
   },
   "dependencies": {

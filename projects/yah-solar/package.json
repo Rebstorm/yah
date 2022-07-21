@@ -2,8 +2,8 @@
   "name": "yah-solar",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^13.1.2",
-    "@angular/core": "^13.1.2",
+    "@angular/common": "^13.1.2 || ^14.0.0",
+    "@angular/core": "^13.1.2 || ^14.0.0",
     "ngx-spinner": "13.1.1",
     "@ngx-pwa/local-storage": "13.0.5",
     "@ngneat/overview": "3.0.4",
