@@ -57,7 +57,7 @@
     "@types/node": "16.18.3",
     "codelyzer": "6.0.2",
     "electron": "21.2.3",
-    "electron-packager": "16.0.0",
+    "electron-packager": "17.1.1",
     "jasmine-core": "4.5.0",
     "jasmine-spec-reporter": "7.0.0",
     "karma": "6.4.1",
