@@ -7,7 +7,7 @@
  
  The UI builds on the [glassmorphic principle](https://uxdesign.cc/glassmorphism-in-user-interfaces-1f39bb1308c9). 
 
-_Latest Improvement_: Angular 14!
+_Latest Improvement_: Angular 15. Sweet. 
  
 ## Currently supported systems
 - [Philips Hue](https://www.philips-hue.com/)

@@ -348,5 +348,8 @@
       }
     }
   },
-  "defaultProject": "yah"
+  "defaultProject": "yah",
+  "cli": {
+    "analytics": false
+  }
 }
