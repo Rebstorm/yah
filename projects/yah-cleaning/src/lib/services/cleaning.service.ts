@@ -1,29 +1,11 @@
-import { Injectable } from '@angular/core';
-import {
-  combineLatest,
-  concat,
-  empty,
-  EMPTY,
-  iif,
-  NEVER,
-  Observable,
-  of,
-} from 'rxjs';
-import { HttpClient, HttpEvent, HttpResponse } from '@angular/common/http';
-import {
-  delay,
-  filter,
-  map,
-  repeat,
-  switchMap,
-  tap,
-  timeout,
-  timestamp,
-} from 'rxjs/operators';
-import { CleaningStatus } from '../types/cleaning-status';
-import { StorageMap } from '@ngx-pwa/local-storage';
-import { HotToastService } from '@ngneat/hot-toast';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {combineLatest, Observable,} from 'rxjs';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {filter, map, switchMap, tap, timeout,} from 'rxjs/operators';
+import {CleaningStatus} from '../types/cleaning-status';
+import {StorageMap} from '@ngx-pwa/local-storage';
+import {HotToastService} from '@ngneat/hot-toast';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -77,7 +59,7 @@ export class CleaningService {
       filter((serverUrl) => !!serverUrl),
       switchMap((serverUrl) => {
         return this.http
-          .get<CleaningStatus>(`http://${serverUrl}/api/local/info/mission`)
+          .get<CleaningStatus>(`http://${serverUrl}/api/local/info/mission`);
       })
     );
   }
