@@ -7,7 +7,7 @@
     "ngx-spinner": "15.0.1",
     "@ngx-pwa/local-storage": "13.0.5",
     "@ngneat/overview": "3.0.4",
-    "@ngneat/hot-toast": "4.1.0"
+    "@ngneat/hot-toast": "5.0.1"
   },
   "dependencies": {
     "tslib": "2.4.1"
