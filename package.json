@@ -41,7 +41,7 @@
     "@angular/router": "15.2.9",
     "@angular/service-worker": "15.2.9",
     "@ngneat/hot-toast": "5.0.2",
-    "@ngneat/overview": "4.1.0",
+    "@ngneat/overview": "5.1.1",
     "@ngx-pwa/local-storage": "15.0.0",
     "ngx-spinner": "15.0.1",
     "process": "0.11.10",
