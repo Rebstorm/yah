@@ -10,6 +10,6 @@
     "@ngneat/hot-toast": "5.0.2"
   },
   "dependencies": {
-    "tslib": "2.6.2"
+    "tslib": "2.8.1"
   }
 }
