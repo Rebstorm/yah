@@ -2,8 +2,8 @@
   "name": "yah-light",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^15.1.1",
-    "@angular/core": "^15.1.1",
+    "@angular/common": "^15.1.1 || ^20.0.0",
+    "@angular/core": "^15.1.1 || ^20.0.0",
     "ngx-spinner": "15.0.1",
     "@ngx-pwa/local-storage": "15.0.0",
     "@ngneat/overview": "4.1.0",
